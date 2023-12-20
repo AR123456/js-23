@@ -4,3 +4,14 @@ const removeClearButton = () => {
   clearBtn.remove();
 };
 // removeClearButton();
+
+/// remove the first list item using removeChild()
+const removeFirstItem = () => {
+  // get parent
+  ul = document.querySelector("ul");
+  // child to remove
+  firstLi = document.querySelector("li:nth-child(1)");
+  // call it on the parent
+  ul.removeChild(firstLi);
+};
+removeFirstItem();
