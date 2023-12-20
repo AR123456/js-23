@@ -20,13 +20,26 @@ const replaceSecondItem = () => {
 // replaceSecondItem();
 
 // replace All Items with outerHTML
-const replaceAllItems = () => {
+const replaceAllItemsO = () => {
   // this is a node list -
   const lists = document.querySelectorAll("li");
   console.log(lists);
   // loop the node list have the forEach() without the need to make an array
   lists.forEach((list) => {
     list.outerHTML = "<li>All replaced with this </li>";
+  });
+};
+
+// replaceAllItemsO();
+// replace All Items with innerHTML
+const replaceAllItems = () => {
+  // this is a node list -
+  const lists = document.querySelectorAll("li");
+  console.log(lists);
+  // loop the node list have the forEach() without the need to make an array
+  lists.forEach((list) => {
+    // do not need the tags for innerHTML
+    list.innerHTML = "All replaced with this";
   });
 };
 
