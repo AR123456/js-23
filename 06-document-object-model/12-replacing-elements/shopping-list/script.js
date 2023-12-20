@@ -17,4 +17,17 @@ const replaceSecondItem = () => {
   // this can be just a string, or put the HTML in the string
   secondItem.outerHTML = "<li>Replaced Second using outerHTML</li>";
 };
-replaceSecondItem();
+// replaceSecondItem();
+
+// replace All Items with outerHTML
+const replaceAllItems = () => {
+  // this is a node list -
+  const lists = document.querySelectorAll("li");
+  console.log(lists);
+  // loop the node list have the forEach() without the need to make an array
+  lists.forEach((list) => {
+    list.outerHTML = "<li>All replaced with this </li>";
+  });
+};
+
+replaceAllItems();
