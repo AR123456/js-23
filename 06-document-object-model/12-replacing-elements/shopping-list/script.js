@@ -43,4 +43,17 @@ const replaceAllItems = () => {
   });
 };
 
-replaceAllItems();
+// replaceAllItems();
+
+// using  replaceChild() Method - takes in new and current
+replaceChildHeading = () => {
+  // header is the parent
+  const header = document.querySelector("header");
+  const currentH1 = document.querySelector("header h1");
+
+  const newH1 = document.createElement("h1");
+  newH1.id = "app-title";
+  newH1.textContent = "New and improved Shopping list header";
+  header.replaceChild(newH1, currentH1);
+};
+replaceChildHeading();
