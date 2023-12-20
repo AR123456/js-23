@@ -9,5 +9,12 @@ const replaceFirstItem = () => {
   itemToReplace.replaceWith(li);
 };
 
-replaceFirstItem();
+// replaceFirstItem();
+
 // OuterHTML Property  outerHTML()
+const replaceSecondItem = () => {
+  const secondItem = document.querySelector("li:nth-child(2)");
+  // this can be just a string, or put the HTML in the string
+  secondItem.outerHTML = "<li>Replaced Second using outerHTML</li>";
+};
+replaceSecondItem();
