@@ -14,4 +14,11 @@ const removeFirstItem = () => {
   // call it on the parent
   ul.removeChild(firstLi);
 };
-removeFirstItem();
+// removeFirstItem();
+/// using removeChild passing in the node list postion
+const removeItem = (num) => {
+  const ul = document.querySelector("ul");
+  const li = document.querySelector(`li:nth-child(${num})`);
+  ul.removeChild(li);
+};
+removeItem(2);
