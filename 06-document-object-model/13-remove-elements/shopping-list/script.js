@@ -29,4 +29,12 @@ const removeItem2 = (num) => {
   const li = document.querySelectorAll("li")[num - 2];
   ul.removeChild(li);
 };
-removeItem2(2);
+// removeItem2(2);
+// using .remove() on the li
+const removeItem3 = (num) => {
+  // using .remove
+  const li = document.querySelectorAll("li");
+  // li is a node list array like
+  li[num - 1].remove();
+};
+removeItem3(2);
