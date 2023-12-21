@@ -15,10 +15,18 @@ const removeFirstItem = () => {
   ul.removeChild(firstLi);
 };
 // removeFirstItem();
-/// using removeChild passing in the node list postion
+/// using removeChild passing in the node list position
 const removeItem = (num) => {
   const ul = document.querySelector("ul");
   const li = document.querySelector(`li:nth-child(${num})`);
   ul.removeChild(li);
 };
-removeItem(2);
+// removeItem(2);
+/// using removeChild using querySelector all
+const removeItem2 = (num) => {
+  const ul = document.querySelector("ul");
+  // node list - array like so can access the index
+  const li = document.querySelectorAll("li")[num - 2];
+  ul.removeChild(li);
+};
+removeItem2(2);
