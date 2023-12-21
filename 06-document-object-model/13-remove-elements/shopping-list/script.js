@@ -37,4 +37,10 @@ const removeItem3 = (num) => {
   // li is a node list array like
   li[num - 1].remove();
 };
-removeItem3(2);
+// removeItem3(2);
+// using querySelectorAll and .remove
+const removeItem4 = (num) => {
+  // node list array like
+  document.querySelectorAll("li")[num - 1].remove();
+};
+removeItem4(2);
