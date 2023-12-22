@@ -3,7 +3,10 @@ const itemList = document.querySelector(".item-list");
 const items = document.querySelectorAll("li");
 
 const run = () => {
-  console.log("run");
+  // className - can get
+  console.log(itemList.className);
+  // or set
+  text.className = "dark";
 };
 
 // set up the on click to run the run function
