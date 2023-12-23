@@ -11,10 +11,12 @@ const run = () => {
   // its a dom token list and similar to an array
   // console.log(itemList.classList);
   //
-  itemList.classList.forEach((item) => {
-    // getting the class list this way
-    console.log(item);
-  });
+  // itemList.classList.forEach((item) => {
+  //   // getting the class list this way
+  //   console.log(item);
+  // });
+  /// add dark them to classList
+  text.classList.add("dark");
 };
 
 // set up the on click to run the run function
