@@ -9,8 +9,12 @@ const run = () => {
   // text.className = "dark";
   // classList object- the better way to handle
   // its a dom token list and similar to an array
-  console.log(itemList.classList);
+  // console.log(itemList.classList);
   //
+  itemList.classList.forEach((item) => {
+    // getting the class list this way
+    console.log(item);
+  });
 };
 
 // set up the on click to run the run function
