@@ -21,7 +21,9 @@ const run = () => {
   // text.classList.remove("card");
   /// toggle
   // text.classList.toggle("dark");
-  text.classList.replace("card", "dark");
+  // text.classList.replace("card", "dark");
+  //// using style property
+  itemList.style.lineHeight = "3";
 };
 
 // set up the on click to run the run function
