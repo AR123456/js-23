@@ -4,7 +4,7 @@ const items = document.querySelectorAll("li");
 
 const run = () => {
   // className - can get
-  console.log(itemList.className);
+  // console.log(itemList.className);
   // or set
   // text.className = "dark";
   // classList object- the better way to handle
@@ -16,9 +16,12 @@ const run = () => {
   //   console.log(item);
   // });
   /// add dark them to classList
-  text.classList.add("dark");
-  // can also remove
-  text.classList.remove("card");
+  // text.classList.add("dark");
+  // // can also remove
+  // text.classList.remove("card");
+  /// toggle
+  // text.classList.toggle("dark");
+  text.classList.replace("card", "dark");
 };
 
 // set up the on click to run the run function
