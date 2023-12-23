@@ -17,6 +17,8 @@ const run = () => {
   // });
   /// add dark them to classList
   text.classList.add("dark");
+  // can also remove
+  text.classList.remove("card");
 };
 
 // set up the on click to run the run function
