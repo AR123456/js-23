@@ -24,3 +24,9 @@ function onClick(e) {
   console.log(e.screenY);
 }
 logo.addEventListener("click", onClick);
+document.body.addEventListener("click", function (e) {
+  // the target is what was clicked
+  console.log(e.target);
+  // here the event is put on the body, not the image tag
+  console.log(e.currentTarget);
+});
