@@ -12,18 +12,25 @@ function onClick(e) {
   console.log(e.target);
   console.log(e.currentTarget);
   e.target.style.backgroundColor = "black";
+  // the type of event that was triggered
   console.log(e.type);
+
   console.log(e.timeStamp);
+  // mouse click relative to the window
   console.log(e.clientX);
   console.log(e.clientY);
+  // mouse click relative to the element
   console.log(e.offsetX);
   console.log(e.offsetY);
+  // position relative to page
   console.log(e.pageX);
   console.log(e.pageY);
+  // position relative to screen
   console.log(e.screenX);
   console.log(e.screenY);
 }
 logo.addEventListener("click", onClick);
+// events bubble up to the parents
 document.body.addEventListener("click", function (e) {
   // the target is what was clicked
   console.log(e.target);
