@@ -8,8 +8,10 @@ logo.addEventListener("click", function (e) {
 
 function onClick(e) {
   // Event properties
+  //the target is the element that triggered the event
   console.log(e.target);
   console.log(e.currentTarget);
+  e.target.style.backgroundColor = "black";
   console.log(e.type);
   console.log(e.timeStamp);
   console.log(e.clientX);
