@@ -44,3 +44,11 @@ document.querySelector("a").addEventListener("click", function (e) {
   e.preventDefault();
   console.log("Link was clicked ");
 });
+
+// the drag
+function onDrag(e) {
+  document.querySelector(
+    "h1"
+  ).textContent = `X is${e.clientX} and Y is ${e.clientY}`;
+}
+logo.addEventListener("drag", onDrag);
