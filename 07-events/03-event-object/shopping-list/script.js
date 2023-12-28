@@ -37,3 +37,10 @@ document.body.addEventListener("click", function (e) {
   // here the event is put on the body, not the image tag
   console.log(e.currentTarget);
 });
+
+/// e.prevent default - stop the default behavior
+document.querySelector("a").addEventListener("click", function (e) {
+  // this is very useful when working with forms
+  e.preventDefault();
+  console.log("Link was clicked ");
+});
