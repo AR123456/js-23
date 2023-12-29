@@ -16,6 +16,14 @@ const onKeyDown = (e) => {
   if (e.code === "Digit1") {
     console.log("You pressed 1");
   }
+  // repeat
+  if (e.repeat) {
+    console.log("You are holding down " + e.key);
+  }
+  // shiftKey, ctrlKey & altKey
+  console.log("Shift: " + e.shiftKey);
+  console.log("Control: " + e.ctrlKey);
+  console.log("Alt: " + e.altKey);
 };
 
 itemInput.addEventListener("keyup", onKeyUp);
