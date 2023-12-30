@@ -6,15 +6,17 @@
 const insert = document.querySelector("#insert");
 
 const onKeyDown = (e) => {
-  console.log(e.key);
-  console.log(e.keyCode);
-  console.log(e.code);
+  // console.log(e.key);
+  // console.log(e.keyCode);
+  // console.log(e.code);
 
   insert.innerHTML = `    <div class="container">
 
-<div class="key">  <small>e.key</small>${e.key}</div>
+<div class="key">  <small>e.key</small>${e.key === " " ? "Space" : e.key}</div>
 <div class="key">  <small>e.keyCode</small> ${e.keyCode}</div>
 <div class="key" >  <small>e.code</small> ${e.code}</div>
 </div>`;
 };
 document.addEventListener("keydown", onKeyDown);
+
+//// another way to solve
