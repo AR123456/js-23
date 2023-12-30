@@ -17,6 +17,16 @@ const onKeyDown = (e) => {
 <div class="key" >  <small>e.code</small> ${e.code}</div>
 </div>`;
 };
-document.addEventListener("keydown", onKeyDown);
+// document.addEventListener("keydown", onKeyDown);
 
 //// another way to solve
+const showKeyCodes = (e) => {
+  //make object
+  const keyCodes = {
+    "e.key": e.key === " " ? "Space" : e.key,
+    "e.keyCode": e.keyCode,
+    "e.code": e.code,
+  };
+  console.log(keyCodes);
+};
+window.addEventListener("keydown", showKeyCodes);
