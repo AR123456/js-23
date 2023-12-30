@@ -9,5 +9,11 @@ const onKeyDown = (e) => {
   console.log(e.key);
   console.log(e.keyCode);
   console.log(e.code);
+
+  insert.innerHTML = `    <div class="container">
+<div class="key-code">You pressed: ${e.key}</div>
+<div class="location">Its keyCode is: ${e.keyCode}</div>
+<div class="code" >Its code is: ${e.code}</div>
+</div>`;
 };
 document.addEventListener("keydown", onKeyDown);
