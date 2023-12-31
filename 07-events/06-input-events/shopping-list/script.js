@@ -22,3 +22,9 @@ function onSelect(e) {
 priorityInput.addEventListener("input", onSelect);
 // change does same
 // priorityInput.addEventListener("change", onSelect);
+
+// check box
+function onChecked(e) {
+  console.log(e.target.checked);
+}
+checkbox.addEventListener("input", onChecked);
