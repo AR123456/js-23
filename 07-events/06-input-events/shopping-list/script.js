@@ -14,3 +14,11 @@ function onInput(e) {
 }
 // the input event works with all the input types
 itemInput.addEventListener("input", onInput);
+
+// looking at the select list -
+function onSelect(e) {
+  console.log(e.target.value);
+}
+priorityInput.addEventListener("input", onSelect);
+// change does same
+// priorityInput.addEventListener("change", onSelect);
