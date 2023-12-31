@@ -26,5 +26,8 @@ priorityInput.addEventListener("input", onSelect);
 // check box
 function onChecked(e) {
   console.log(e.target.checked);
+  // so can use by checking boolean
+  const isChecked = e.target.checked;
+  heading.textContent = isChecked ? "checked" : "Not checked";
 }
 checkbox.addEventListener("input", onChecked);
