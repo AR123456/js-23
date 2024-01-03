@@ -6,7 +6,7 @@ const form = document.querySelector("form");
 button.addEventListener("click", (e) => {
   //   e.preventDefault();
   alert("clicked");
-  //   e.stopPropagation();
+  e.stopPropagation();
 });
 // this will bubble up to its parents
 div.addEventListener("click", () => {
