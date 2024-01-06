@@ -2,10 +2,10 @@
 // window.onload = function () {
 //   document.querySelector('h1').textContent = 'Hello World';
 // };
-
+// wait for the entire page to load including all resources
 window.addEventListener("load", () => console.log("Page Loaded"));
 
-// On DOM Load
+// On DOM Load - runs as soon as the DOM is parsed
 window.addEventListener("DOMContentLoaded", () => console.log("DOM Loaded"));
 
 console.log("Run me");
