@@ -1,12 +1,19 @@
 // declare relevant dom elemets
 const input = document.querySelector("#item-input");
 const addBtn = document.querySelector(".btn");
-const itemFilterInput = "";
-const liItem = "";
-const deleteButton = "";
-const clearAllBtn = "";
+const itemFilterInput = document.querySelector("#filter");
+const liItem = document.querySelector("li");
+const deleteButton = document.querySelector(".remove-item");
+const clearAllBtn = document.querySelector("#clear");
+
+// input function
+const validInputItem = (e) => {
+  // need all the keys not just one
+  console.log(e.key);
+};
 
 // put event listener on the input
+input.addEventListener("keyup", validInputItem);
 
 // put event listioner on the button, on click
 // take the text from input, clean it up by stripping out spaces and things that are not letters or numbers.
