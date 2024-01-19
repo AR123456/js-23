@@ -18,4 +18,13 @@ function startChange() {
 function stopChange() {
   clearInterval(intervalID);
 }
+function changeColor() {
+  if (document.body.style.backgroundColor !== "pink") {
+    document.body.style.backgroundColor = "pink";
+  } else {
+    document.body.style.backgroundColor = "white";
+  }
+}
+
 document.getElementById("stop").addEventListener("click", stopChange);
+document.getElementById("start").addEventListener("click", startChange);
