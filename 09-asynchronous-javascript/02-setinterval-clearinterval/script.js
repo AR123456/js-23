@@ -10,8 +10,11 @@ let intervalID;
 
 function startChange() {
   // check to see if the setInterval is running
+  if (!intervalID) {
+    // set it and call the changeColor function after one sec and then run it every one seconds
+    intervalID = setInterval(changeColor, 1000);
+  }
 }
-
 function stopChange() {
   clearInterval(intervalID);
 }
