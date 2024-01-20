@@ -25,6 +25,9 @@ function changeColor() {
     document.body.style.backgroundColor = "white";
   }
 }
+function stopChange() {
+  clearInterval(intervalID);
+}
 
-document.getElementById("stop").addEventListener("click", stopChange);
 document.getElementById("start").addEventListener("click", startChange);
+document.getElementById("stop").addEventListener("click", stopChange);
