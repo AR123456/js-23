@@ -19,8 +19,8 @@ function stopChange() {
   clearInterval(intervalID);
 }
 function changeColor() {
-  if (document.body.style.backgroundColor !== "pink") {
-    document.body.style.backgroundColor = "pink";
+  if (document.body.style.backgroundColor !== "#FFC0CB") {
+    document.body.style.backgroundColor = "#FFC0CB";
   } else {
     document.body.style.backgroundColor = "white";
   }
