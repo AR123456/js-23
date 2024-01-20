@@ -15,19 +15,13 @@ function startChange() {
     intervalID = setInterval(changeColor, 1000);
   }
 }
-function stopChange() {
-  clearInterval(intervalID);
-}
-function changeColor() {
-  if (document.body.style.backgroundColor !== "#FFC0CB") {
-    document.body.style.backgroundColor = "#FFC0CB";
-  } else {
-    document.body.style.backgroundColor = "white";
-  }
-}
-function stopChange() {
-  clearInterval(intervalID);
-}
 
+function changeColor() {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  document.body.style.backgroundColor = `#${randomColor}`;
+}
+function stopChange() {
+  clearInterval(intervalID);
+}
 document.getElementById("start").addEventListener("click", startChange);
 document.getElementById("stop").addEventListener("click", stopChange);
