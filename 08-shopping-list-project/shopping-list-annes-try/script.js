@@ -1,27 +1,22 @@
 // declare relevant dom elemets
-const itemInput = document.querySelector("#item-input");
-const addItem = document.querySelector(".btn");
+const item = document.querySelector("#item-input");
+
 const itemFilterInput = document.querySelector("#filter");
 const liItem = document.querySelector("li");
 const deleteButton = document.querySelector(".remove-item");
 const clearBtn = document.querySelector("#clear");
+const form = document.querySelector("#item-form");
 
-// input function
-const onInput = (e) => {
-  // TODO in this function clean this up
-
-  console.log(e.target.value);
+const onSubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const item = formData.get("item");
+  // returns string
+  console.log(typeof item);
 };
-const onAddItem = () => {
-  // get value from onInput
-  // write it to the DOM
-};
-// put event listioner on the button, on click
-// take the text from input, clean it up by stripping out spaces and things that are not letters or numbers.
-// make the first letter upper case
-//add the item as and li to the ul
 
 // deleting items -
+const onDelete = () => {};
 //add on click of x icon , when clicked allert do you want to del
 // remove item from the DOM ul
 
@@ -38,11 +33,14 @@ const onClear = () => {
 
 //// call the event listeners after the functions are declared
 // put event listener on the item-input
-itemInput.addEventListener("input", onInput);
+
+// on submit
+form.addEventListener("submit", onSubmit);
+
 // put event listener on the clearBTN
 clearBtn.addEventListener("click", onClear);
 // event listener on addItem button
-addItem.addEventListener("click", onAddItem);
+deleteButton.addEventListener("click", onDelete);
 // edit mode ?
 // make it persist to local storage
 // deploy
