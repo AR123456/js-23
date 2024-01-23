@@ -1,19 +1,16 @@
 // declare relevant dom elemets
-const input = document.querySelector("#item-input");
+const itemInput = document.querySelector("#item-input");
 const addBtn = document.querySelector(".btn");
 const itemFilterInput = document.querySelector("#filter");
 const liItem = document.querySelector("li");
 const deleteButton = document.querySelector(".remove-item");
-const clearAllBtn = document.querySelector("#clear");
+const clearBtn = document.querySelector("#clear");
 
 // input function
-const validInputItem = (e) => {
-  // need all the keys not just one
-  console.log(e.key);
+const onInput = (e) => {
+  // TODO in this function clean this up
+  console.log(e.target.value);
 };
-
-// put event listener on the input
-input.addEventListener("keyup", validInputItem);
 
 // put event listioner on the button, on click
 // take the text from input, clean it up by stripping out spaces and things that are not letters or numbers.
@@ -29,6 +26,17 @@ input.addEventListener("keyup", validInputItem);
 // add any additional keys to the filter string
 
 // set up on click of the clear button that clears all the items from the DOM
+
+const onClear = () => {
+  // alert
+  // clear items
+};
+
+//// call the event listeners after the functions are declared
+// put event listener on the item-input
+itemInput.addEventListener("input", onInput);
+// put event listener on the clearBTN
+clearBtn.addEventListener("click", onClear);
 // edit mode ?
 // make it persist to local storage
 // deploy
