@@ -1,6 +1,6 @@
 // declare relevant dom elemets
 const itemInput = document.querySelector("#item-input");
-const addBtn = document.querySelector(".btn");
+const addItem = document.querySelector(".btn");
 const itemFilterInput = document.querySelector("#filter");
 const liItem = document.querySelector("li");
 const deleteButton = document.querySelector(".remove-item");
@@ -9,9 +9,16 @@ const clearBtn = document.querySelector("#clear");
 // input function
 const onInput = (e) => {
   // TODO in this function clean this up
-  console.log(e.target.value);
+  let addedItem = e.target.value;
+  console.log(addedItem);
+  return addedItem;
 };
-
+const onAddItem = (addedItem) => {
+  e.preventDefault();
+  console.log(addedItem);
+  // get value from onInput
+  // write it to the DOM
+};
 // put event listioner on the button, on click
 // take the text from input, clean it up by stripping out spaces and things that are not letters or numbers.
 // make the first letter upper case
@@ -37,6 +44,8 @@ const onClear = () => {
 itemInput.addEventListener("input", onInput);
 // put event listener on the clearBTN
 clearBtn.addEventListener("click", onClear);
+// event listener on addItem button
+addItem.addEventListener("click", onAddItem);
 // edit mode ?
 // make it persist to local storage
 // deploy
