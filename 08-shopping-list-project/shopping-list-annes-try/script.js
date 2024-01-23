@@ -9,13 +9,10 @@ const clearBtn = document.querySelector("#clear");
 // input function
 const onInput = (e) => {
   // TODO in this function clean this up
-  let addedItem = e.target.value;
-  console.log(addedItem);
-  return addedItem;
+
+  console.log(e.target.value);
 };
-const onAddItem = (addedItem) => {
-  e.preventDefault();
-  console.log(addedItem);
+const onAddItem = () => {
   // get value from onInput
   // write it to the DOM
 };
