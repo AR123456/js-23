@@ -12,9 +12,21 @@ const onSubmit = (e) => {
   const formData = new FormData(form);
   const item = formData.get("item");
   // returns string
-  console.log(typeof item);
+  console.log(item);
+  createListItem(item);
+  //TODO clear the input element after submit
 };
-
+const createListItem = (item) => {
+  // add to DOM
+  const li = document.createElement("li");
+  li.innerHTML = `
+${item}
+ <button class="remove-item btn-link text-red">
+   <i class="fa-solid fa-xmark"></i>
+ </button>
+`;
+  document.querySelector(".items").appendChild(li);
+};
 // deleting items -
 const onDelete = () => {};
 //add on click of x icon , when clicked allert do you want to del
