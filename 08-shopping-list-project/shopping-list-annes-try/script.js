@@ -9,12 +9,15 @@ const form = document.querySelector("#item-form");
 
 const onSubmit = (e) => {
   e.preventDefault();
+  // TODO validate input and cap first letter
   const formData = new FormData(form);
   const item = formData.get("item");
   // returns string
   console.log(item);
+  // put into local storage
   createListItem(item);
   //TODO clear the input element after submit
+  form.reset();
 };
 const createListItem = (item) => {
   // add to DOM
@@ -28,9 +31,9 @@ ${item}
   document.querySelector(".items").appendChild(li);
 };
 // deleting items -
-const onDelete = () => {};
-//add on click of x icon , when clicked allert do you want to del
-// remove item from the DOM ul
+const onDelete = () => {
+  console.log("you hit the red x");
+};
 
 // filter  add event listoner to the filter input
 // onkey -down or up or press call function that filters  by looking for that value in any of the list item text.  only show the match in the DOM
