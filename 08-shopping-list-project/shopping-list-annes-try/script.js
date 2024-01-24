@@ -17,7 +17,6 @@ const onSubmit = (e) => {
   // put into local storage
   createListItem(item);
   //TODO clear the input element after submit
-  form.reset();
 };
 const createListItem = (item) => {
   // add to DOM
