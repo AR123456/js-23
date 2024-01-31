@@ -5,14 +5,14 @@ const itemList = document.getElementById("item-list");
 const clearBtn = document.getElementById("clear");
 const itemFilter = document.getElementById("filter");
 const formBtn = itemForm.querySelector("button");
-let isEditMode = false;
+
 // functions
 function addItem(e) {
   // dont submit
   e.preventDefault();
   const newItem = itemInput.value;
   // basic validation
-  if (newItem === " ") {
+  if (newItem === "") {
     alert("Please add item");
     return;
   }
@@ -24,6 +24,7 @@ function addItem(e) {
   li.appendChild(button);
   // add to dom
   itemList.appendChild(li);
+  checkUI();
   // after adding to dom clear the input box
   itemInput.value = "";
 }
@@ -49,6 +50,7 @@ function removeItem(e) {
     // traverse the DOM to get to the li
     e.target.parentElement.parentElement.remove();
   }
+  checkUI();
 }
 // delete individual items
 function clearItems() {
@@ -58,6 +60,20 @@ function clearItems() {
       itemList.removeChild(itemList.firstChild);
     }
   }
+  checkUI();
+}
+// dont show clear and filter if there are no li on the page
+function checkUI() {
+  // this needs to be defined outside of global scope
+  //querySelectorAll returns a node list -
+  const items = itemList.querySelectorAll("li");
+  if (items.length === 0) {
+    clearBtn.style.display = "none";
+    itemFilter.style.display = "none";
+  } else {
+    clearBtn.style.display = "block";
+    itemFilter.style.display = "block";
+  }
 }
 // Event Listeners
 // listen for submit on form
@@ -65,3 +81,4 @@ itemForm.addEventListener("submit", addItem);
 // to del with the red x on the individual list item put the event on the item list ul and target what is inside that
 itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
+checkUI();
