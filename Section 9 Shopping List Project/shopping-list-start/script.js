@@ -6,7 +6,7 @@ const clearBtn = document.getElementById("clear");
 const itemFilter = document.getElementById("filter");
 const formBtn = itemForm.querySelector("button");
 let isEditMode = false;
-
+// functions
 function addItem(e) {
   // dont submit
   e.preventDefault();
@@ -16,7 +16,6 @@ function addItem(e) {
     alert("Please add item");
     return;
   }
-  // put value typed into DOM
   // list item
   const li = document.createElement("li");
   li.appendChild(document.createTextNode(newItem));
@@ -28,7 +27,7 @@ function addItem(e) {
   // after adding to dom clear the input box
   itemInput.value = "";
 }
-
+// use ths in the addItem function
 const createButton = (classes) => {
   const button = document.createElement("button");
   button.className = classes;
@@ -36,6 +35,7 @@ const createButton = (classes) => {
   button.appendChild(icon);
   return button;
 };
+// use this in the addItem function
 function createIcon(classes) {
   const icon = document.createElement("i");
   icon.className = classes;
@@ -44,11 +44,19 @@ function createIcon(classes) {
 function removeItem(e) {
   // click on x but delete the list item which is 2 parents up
   // console.log(e.target.parentElement.parentElement);
-
-  // put this in an if to check if the remove-item class is on the button - not totally necessary for this use case
+  // put this in an if to check if the remove-item class is on the button
   if (e.target.parentElement.classList.contains("remove-item")) {
     // traverse the DOM to get to the li
     e.target.parentElement.parentElement.remove();
+  }
+}
+// delete individual items
+function clearItems() {
+  if (confirm("You are about to delete all,are you sure?") == true) {
+    // using a while loop
+    while (itemList.firstChild) {
+      itemList.removeChild(itemList.firstChild);
+    }
   }
 }
 // Event Listeners
@@ -56,3 +64,4 @@ function removeItem(e) {
 itemForm.addEventListener("submit", addItem);
 // to del with the red x on the individual list item put the event on the item list ul and target what is inside that
 itemList.addEventListener("click", removeItem);
+clearBtn.addEventListener("click", clearItems);
