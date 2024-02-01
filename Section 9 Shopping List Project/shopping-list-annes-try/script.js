@@ -32,6 +32,7 @@ ${item}
 // deleting items -
 const onDelete = () => {
   console.log("you hit the red x");
+  ul.remove.firstChild();
 };
 
 // filter  add event listoner to the filter input
