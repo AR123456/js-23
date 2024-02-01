@@ -25,9 +25,12 @@ const createListItem = (item) => {
   document.querySelector(".items").appendChild(li);
 };
 
-const onDelete = () => {
-  console.log("you hit the red x");
-};
+function handleRemoveClick(e) {
+  if (e.target.classList.contains("remove-item")) {
+    const liItem = e.target.parentElement;
+    liItem.remove();
+  }
+}
 
 const onClear = () => {
   if (confirm("You are about to delete all, are you sure?")) {
@@ -43,10 +46,5 @@ form.addEventListener("submit", onSubmit);
 // put event listener on the clearBTN
 clearBtn.addEventListener("click", onClear);
 
-// delete individual items using event delegation
-ul.addEventListener("click", function (e) {
-  if (e.target.classList.contains("remove-item")) {
-    const liItem = e.target.parentElement;
-    liItem.remove();
-  }
-});
+// Attach event listener to ul only once
+ul.addEventListener("click", handleRemoveClick);
