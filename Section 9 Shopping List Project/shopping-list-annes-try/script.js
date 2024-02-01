@@ -2,7 +2,7 @@
 const item = document.querySelector("#item-input");
 
 const itemFilterInput = document.querySelector("#filter");
-const liItem = document.querySelector("li");
+
 const deleteButtons = document.querySelectorAll(".remove-item");
 
 const clearBtn = document.querySelector("#clear");
@@ -35,12 +35,6 @@ const onDelete = () => {
   console.log("you hit the red x");
 };
 
-// filter  add event listoner to the filter input
-// onkey -down or up or press call function that filters  by looking for that value in any of the list item text.  only show the match in the DOM
-// add any additional keys to the filter string
-
-// set up on click of the clear button that clears all the items from the DOM
-
 const onClear = () => {
   if (confirm("You are about to delete all, are you sure?") == true) {
     while (ul.firstChild) {
@@ -49,20 +43,24 @@ const onClear = () => {
   }
 };
 
-//// call the event listeners after the functions are declared
-
 // on submit
 form.addEventListener("submit", onSubmit);
-
 // put event listener on the clearBTN
 clearBtn.addEventListener("click", onClear);
 // delete individual items
 deleteButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    // why not removing dynamically added ?
-    liItem.remove();
+  // button.addEventListener("click", function () {
+  //   // why not removing dynamically added ?
+  //   const liItem = button.parentElement;
+  //   liItem.remove();
+  // });
+  ul.addEventListener("click", function (e) {
+    if (e.target.classList.contains("remove-item")) {
+      // get the parent element (li) of the clicked button
+      const liItem = e.target.parentElement;
+
+      // remove the dynamically added li element
+      liItem.remove();
+    }
   });
 });
-// edit mode ?
-// make it persist to local storage
-// deploy
