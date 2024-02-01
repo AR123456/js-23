@@ -4,6 +4,7 @@ const item = document.querySelector("#item-input");
 const itemFilterInput = document.querySelector("#filter");
 const liItem = document.querySelector("li");
 const deleteButtons = document.querySelectorAll(".remove-item");
+
 const clearBtn = document.querySelector("#clear");
 const form = document.querySelector("#item-form");
 const ul = document.querySelector("ul");
@@ -32,7 +33,6 @@ ${item}
 // deleting items -
 const onDelete = () => {
   console.log("you hit the red x");
-  ul.remove.firstChild();
 };
 
 // filter  add event listoner to the filter input
@@ -50,15 +50,19 @@ const onClear = () => {
 };
 
 //// call the event listeners after the functions are declared
-// put event listener on the item-input
 
 // on submit
 form.addEventListener("submit", onSubmit);
 
 // put event listener on the clearBTN
 clearBtn.addEventListener("click", onClear);
-// event listener on addItem buttons
-// deleteButtons.addEventListener("click", onDelete);
+// delete individual items
+deleteButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    const listItem = button.parentElement;
+    listItem.remove();
+  });
+});
 // edit mode ?
 // make it persist to local storage
 // deploy
