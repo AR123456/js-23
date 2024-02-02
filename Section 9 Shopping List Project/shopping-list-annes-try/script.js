@@ -59,10 +59,8 @@ clearBtn.addEventListener("click", onClear);
 // delete individual items
 deleteButtons.forEach(function (button) {
   button.addEventListener("click", function () {
-    // why not removing dynamically added ?
-    // get the parent element (li) of the clicked button
-    const item = e.target.parentElement;
-    item.remove();
+    const listItem = button.parentElement;
+    listItem.remove();
   });
 });
 // edit mode ?
