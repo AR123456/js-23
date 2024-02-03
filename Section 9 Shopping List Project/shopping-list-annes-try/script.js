@@ -31,11 +31,15 @@ ${item}
   document.querySelector(".items").appendChild(li);
 };
 // deleting items -
-const onDelete = () => {
-  console.log("you hit the red x");
+const onDelete = (e) => {
+  // clicking on the Ul so need to traverse dom and only remove the element with remove class
+  // console.log(e.target.parentElement.parentElement);
+  if (e.target.parentElement.classList.contains("remove-item")) {
+    e.target.parentElement.parentElement.remove();
+  }
 };
 
-// filter  add event listoner to the filter input
+// filter  add event listener to the filter input
 // onkey -down or up or press call function that filters  by looking for that value in any of the list item text.  only show the match in the DOM
 // add any additional keys to the filter string
 
@@ -49,20 +53,13 @@ const onClear = () => {
   }
 };
 
-//// call the event listeners after the functions are declared
-
-// on submit
-form.addEventListener("submit", onSubmit);
-
-// put event listener on the clearBTN
-clearBtn.addEventListener("click", onClear);
-// delete individual items
-deleteButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    const listItem = button.parentElement;
-    listItem.remove();
-  });
-});
 // edit mode ?
 // make it persist to local storage
 // deploy
+// Event listeners
+//// call the event listeners after the functions are declared
+// on submit
+form.addEventListener("submit", onSubmit);
+//  clearBTN
+clearBtn.addEventListener("click", onClear);
+ul.addEventListener("click", onDelete);
