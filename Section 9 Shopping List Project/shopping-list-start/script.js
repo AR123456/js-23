@@ -7,7 +7,7 @@ const itemFilter = document.getElementById("filter");
 const formBtn = itemForm.querySelector("button");
 
 // functions
-function addItem(e) {
+function onAddItemSubmit(e) {
   // dont submit
   e.preventDefault();
   const newItem = itemInput.value;
@@ -16,18 +16,39 @@ function addItem(e) {
     alert("Please add item");
     return;
   }
+  addItemToDOM(newItem);
+  addItemToStorage(newItem);
+  checkUI();
+  // after adding to dom clear the input box
+  itemInput.value = "";
+}
+function addItemToDOM(item) {
   // list item
   const li = document.createElement("li");
-  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(item));
   // button - a function that takes in css classes and makes a button
   const button = createButton("remove-item btn-link text-red");
   li.appendChild(button);
   // add to dom
   itemList.appendChild(li);
-  checkUI();
-  // after adding to dom clear the input box
-  itemInput.value = "";
 }
+// add to local storage
+function addItemToStorage(item) {
+  // array of list of items stringified will jason.parse when we get it out of local storage
+
+  let itemsFromStorage;
+  // are there any items in local storage ?
+  if (localStorage.getItem("items") === null) {
+    itemsFromStorage = [];
+  } else {
+    // get stuff from local storage, which is a string and make it an array
+    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
+  }
+  itemsFromStorage.push(item);
+  // re stringify and put back in local storage
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+}
+
 // use ths in the addItem function
 const createButton = (classes) => {
   const button = document.createElement("button");
@@ -62,17 +83,44 @@ function clearItems() {
   }
   checkUI();
 }
-function filterItems(e) {
-  // for ease of comparison make all lower case
-  const text = e.target.value.toLowerCase();
-  // get the list items for comparison - items is a node list
-  const items = itemList.querySelectorAll("li");
-  items.forEach((item) => {
-    // the first child is the text
-    const itemName = item.firstChild.textContent;
-    console.log(itemName);
-  });
+// function filterItems(e) {
+//   // for ease of comparison make all lower case
+//   const text = e.target.value.toLowerCase();
+//   // get the list items for comparison - items is a node list
+//   const items = itemList.querySelectorAll("li");
+//   items.forEach((item) => {
+//     // the first child is the text
+//     const itemName = item.firstChild.textContent.toLowerCase();
+//     // using index of to determine if the itemName contains the text const
+//     // -1 is what indexOf returns if the passed in value is not in the array
+//     // if (itemName.indexOf(text) != -1) {
+//     // or use includes()
+//     if (itemName.includes(text)) {
+//       // add(keep the style of flex)
+//       item.style.display = "flex";
+//     } else {
+//       // set display to none so the non match is not seen
+//       item.style.display = "none";
+//     }
+//   });
 
+//   console.log(text);
+// }
+function filterItems(e) {
+  // another way to filter from Wil
+  const items = itemList.querySelectorAll("li");
+  const text = e.target.value.toLowerCase();
+  // if letter is anywhere in the word, not neccisarily in the order type
+  items.forEach((item) => {
+    const itemName = item.firstChild.textContent.toLowerCase();
+    for (const letter of text) {
+      if (itemName.includes(letter)) {
+        item.style.display = "flex";
+      } else {
+        item.style.display = "none";
+      }
+    }
+  });
   console.log(text);
 }
 
@@ -92,7 +140,7 @@ function checkUI() {
 
 // Event Listeners
 // listen for submit on form
-itemForm.addEventListener("submit", addItem);
+itemForm.addEventListener("submit", onAddItemSubmit);
 // to del with the red x on the individual list item put the event on the item list ul and target what is inside that
 itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
