@@ -62,6 +62,20 @@ function clearItems() {
   }
   checkUI();
 }
+function filterItems(e) {
+  // for ease of comparison make all lower case
+  const text = e.target.value.toLowerCase();
+  // get the list items for comparison - items is a node list
+  const items = itemList.querySelectorAll("li");
+  items.forEach((item) => {
+    // the first child is the text
+    const itemName = item.firstChild.textContent;
+    console.log(itemName);
+  });
+
+  console.log(text);
+}
+
 // dont show clear and filter if there are no li on the page
 function checkUI() {
   // this needs to be defined outside of global scope
@@ -75,10 +89,13 @@ function checkUI() {
     itemFilter.style.display = "block";
   }
 }
+
 // Event Listeners
 // listen for submit on form
 itemForm.addEventListener("submit", addItem);
 // to del with the red x on the individual list item put the event on the item list ul and target what is inside that
 itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
+// this could be key up or key down , here using the input event
+itemFilter.addEventListener("input", filterItems);
 checkUI();
