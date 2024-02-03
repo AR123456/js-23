@@ -7,7 +7,7 @@ const deleteButtons = document.querySelectorAll(".remove-item");
 const clearBtn = document.querySelector("#clear");
 const form = document.querySelector("#item-form");
 const ul = document.querySelector("ul");
-const li = document.querySelectorAll("li");
+// const li = document.querySelectorAll("li");
 //Functions
 
 const onSubmit = (e) => {
@@ -51,6 +51,24 @@ const onClear = () => {
     }
   }
 };
+
+// filter
+const onFilter = (e) => {
+  // typed in letters
+  const text = e.target.value.toLowerCase();
+  // list
+  const items = document.querySelectorAll("li");
+  items.forEach((item) => {
+    // get the text in the li which is the first child
+    const itemName = item.firstChild.textContent.toLowerCase();
+    if (itemName.includes(text)) {
+      item.style.display = "flex";
+    } else {
+      item.style.display = "none";
+    }
+  });
+};
+//
 const checkUI = () => {
   // check the DOM for li 's and if none found dont show clear and filter otherwise do show
   const items = ul.querySelectorAll("li");
@@ -62,12 +80,6 @@ const checkUI = () => {
     itemFilterInput.display = "block";
   }
 };
-// filter onkey -down looking for that value in any of the list item text.  only show the match in the DOM then any additional keys to the filter string
-const onFilter = (e) => {
-  // as each key is added to filter check other entries for it  and each additional
-  // going to need to loop in some way
-};
-
 // Event listeners call the event listeners after the functions are declared
 // on submit
 form.addEventListener("submit", onSubmit);
@@ -76,6 +88,6 @@ clearBtn.addEventListener("click", onClear);
 // delete item
 ul.addEventListener("click", onDelete);
 // filter
-itemFilterInput.addEventListener("keydown", onFilter);
+itemFilterInput.addEventListener("input", onFilter);
 // check UI state on page load
 checkUI();
