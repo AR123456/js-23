@@ -8,7 +8,8 @@ xhr.onreadystatechange = function () {
 
   // make sure that the request is finished and status is successful
   if (this.readyState === 4 && this.status === 200) {
-    // ready to proceed
+    // this response is a JSON string so use JSON.parse to pars as array
+    console.log(JSON.parse(this.responseText));
   }
 };
 
