@@ -8,7 +8,7 @@ xhr.open("GET", endpoint);
 
 xhr.onreadystatechange = function () {
   const data = JSON.parse(this.responseText);
-  console.log(data.value);
+  joke.innerHTML = `${data}`;
 };
 
 xhr.send();
