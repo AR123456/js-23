@@ -2,7 +2,7 @@
 
 // function takes in endpoint , this is the movie file
 
-function getData(endpoint) {
+function getData(endpoint, cb) {
   //xhr object
   const xhr = new XMLHttpRequest();
   // open with get request to move file
@@ -12,7 +12,7 @@ function getData(endpoint) {
     // check ready state and status
     if ((this.readyState === 4) & (this.status === 200)) {
       //
-      console.log(JSON.parse(this.responseText));
+      cb(JSON.parse(this.responseText));
     }
   };
   // randomly make request with set time out
@@ -21,6 +21,15 @@ function getData(endpoint) {
   }, Math.floor(Math.random() * 3000) + 1000);
 }
 // when done this way it comes back in no particular order
-getData("./movies.json");
-getData("./actors.json");
-getData("./directors.json");
+// getData("./movies.json");
+// getData("./actors.json");
+// getData("./directors.json");
+getData("./movies.json", (data) => {
+  console.log(data);
+  getData("./actors.json", (data) => {
+    console.log(data);
+    getData("./directors.json", (data) => {
+      console.log(data);
+    });
+  });
+});
