@@ -20,4 +20,7 @@ function getData(endpoint) {
     xhr.send();
   }, Math.floor(Math.random() * 3000) + 1000);
 }
+// when done this way it comes back in no particular order
 getData("./movies.json");
+getData("./actors.json");
+getData("./directors.json");
