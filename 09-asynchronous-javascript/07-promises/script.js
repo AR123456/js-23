@@ -14,12 +14,19 @@ promise.then(() => {
   console.log("Promise in the .then aka promise consumed");
 });
 //Another syntax is to put the .then right at the end of the promise
-new Promise((resolve, reject) => {
+const getUser = new Promise((resolve, reject) => {
   // simulating an async task with set time out
   // Do some async task
   setTimeout(() => {
-    // simulating something coming back from an API
-    resolve({ name: "John", age: 30 });
+    // handle and error
+    let error = true;
+    if (!error) {
+      // simulating something coming back from an API
+      resolve({ name: "John", age: 30 });
+    } else {
+      reject("Error goes here");
+    }
   }, 1000);
-}).then((user) => console.log(user));
+});
+getUser.then((user) => console.log(user));
 console.log("Hello from global scope");
