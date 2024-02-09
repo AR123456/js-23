@@ -33,5 +33,9 @@ const getUser = new Promise((resolve, reject) => {
 getUser
   .then((user) => console.log(user))
   // put the reject in a .catch that takes in the reject message from the promise
-  .catch((error) => console.log(error));
+  .catch((error) => console.log(error))
+  // .finally runs if the promise is resovled or rejected
+  .finally(() =>
+    console.log("This promise has been run and been resolved or rejected")
+  );
 console.log("Hello from global scope");
