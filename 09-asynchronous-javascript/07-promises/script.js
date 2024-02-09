@@ -18,8 +18,8 @@ new Promise((resolve, reject) => {
   // simulating an async task with set time out
   // Do some async task
   setTimeout(() => {
-    console.log("Async task 2complete");
-    resolve();
+    // simulating something coming back from an API
+    resolve({ name: "John", age: 30 });
   }, 1000);
-}).then(() => console.log("promise 2 consumed"));
+}).then((user) => console.log(user));
 console.log("Hello from global scope");
