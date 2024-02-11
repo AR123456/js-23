@@ -1,24 +1,25 @@
+function getData(endpoint, cb) {
+  const xhr = new XMLHttpRequest();
 
-const posts = [
-  { title: 'Post One', body: 'This is post one' },
-  { title: 'Post Two', body: 'This is post two' },
-];
+  xhr.open("GET", endpoint);
 
-function createPost(post, cb) {
+  xhr.onreadystatechange = function () {
+    if ((this.readyState === 4) & (this.status === 200)) {
+      cb(JSON.parse(this.responseText));
+    }
+  };
+
   setTimeout(() => {
-    posts.push(post);
-    cb();
-  }, 2000);
+    xhr.send();
+  }, Math.floor(Math.random() * 3000) + 1000);
 }
 
-function getPosts() {
-  setTimeout(() => {
-    posts.forEach(function (post) {
-      const div = document.createElement('div');
-      div.innerHTML = `<strong>${post.title}</strong> - ${post.body}`;
-      document.querySelector('#posts').appendChild(div);
+getData("./movies.json", (data) => {
+  console.log(data);
+  getData("./actors.json", (data) => {
+    console.log(data);
+    getData("./directors.json", (data) => {
+      console.log(data);
     });
-  }, 1000);
-}
-
-createPost({ title: 'Post Three', body: 'This is post' }, getPosts);
+  });
+});
