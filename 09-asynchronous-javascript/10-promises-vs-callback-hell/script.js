@@ -1,7 +1,7 @@
 function getData(endpoint, cb) {
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', endpoint);
+  xhr.open("GET", endpoint);
 
   xhr.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
@@ -14,11 +14,11 @@ function getData(endpoint, cb) {
   }, Math.floor(Math.random() * 3000) + 1000);
 }
 
-getData('./movies.json', (data) => {
+getData("./movies.json", (data) => {
   console.log(data);
-  getData('./actors.json', (data) => {
+  getData("./actors.json", (data) => {
     console.log(data);
-    getData('./directors.json', (data) => {
+    getData("./directors.json", (data) => {
       console.log(data);
     });
   });
