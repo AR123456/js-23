@@ -43,4 +43,8 @@ getData("./movies.json")
   })
   .then((actors) => {
     console.log(actors);
+    return getData("./directors.json");
+  })
+  .then((directors) => {
+    console.log(directors);
   });
