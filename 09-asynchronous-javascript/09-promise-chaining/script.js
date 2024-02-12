@@ -17,6 +17,8 @@ promise
   // can access the return in another .then
   .then((name) => {
     console.log(name);
+    return name.length;
   })
+  .then((nameLength) => console.log(nameLength))
 
   .catch((error) => console.log(error));
