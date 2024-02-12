@@ -36,6 +36,11 @@ function getData(endpoint) {
 //     });
 //   });
 // });
-getData("./movies.json").then((movies) => {
-  console.log(movies);
-});
+getData("./movies.json")
+  .then((movies) => {
+    console.log(movies);
+    return getData("./actors.json");
+  })
+  .then((actors) => {
+    console.log(actors);
+  });
