@@ -24,9 +24,11 @@ const moviesPromise = getData("./movies.json");
 const actorsPromise = getData("./actors.json");
 const directorsPromise = getData("./directors.json");
 // takes in an array of promises
-Promise.all([moviesPromise, actorsPromise, directorsPromise]).then((data) => {
-  console.log(data);
-});
+Promise.all([moviesPromise, actorsPromise, directorsPromise])
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => console.log(error));
 
 // getData("./movies.json")
 //   .then((movies) => {
