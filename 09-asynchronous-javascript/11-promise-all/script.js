@@ -23,8 +23,13 @@ function getData(endpoint) {
 const moviesPromise = getData("./movies.json");
 const actorsPromise = getData("./actors.json");
 const directorsPromise = getData("./directors.json");
+
+const dummyPromise = new Promise((resolve, reject) => {
+  resolve("Hello World");
+});
+
 // takes in an array of promises
-Promise.all([moviesPromise, actorsPromise, directorsPromise])
+Promise.all([moviesPromise, actorsPromise, directorsPromise, dummyPromise])
   .then((data) => {
     console.log(data);
   })
