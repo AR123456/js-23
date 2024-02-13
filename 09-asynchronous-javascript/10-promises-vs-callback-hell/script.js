@@ -47,4 +47,6 @@ getData("./movies.json")
   })
   .then((directors) => {
     console.log(directors);
-  });
+  })
+  // handle the error in the catch- returns what is in the reject() above
+  .catch((error) => console.log(error));
