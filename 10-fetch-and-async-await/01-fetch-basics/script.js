@@ -9,3 +9,7 @@ fetch("./movies.json")
 fetch("./test.txt")
   .then((response) => response.text())
   .then((data) => console.log(data));
+// fetching from an API someone elses or your own backend
+fetch("http://api.github.com/users")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
