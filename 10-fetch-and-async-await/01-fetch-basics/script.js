@@ -1,19 +1,11 @@
-// use fetch to make the request
+// use fetch to make the request  - a json file
 fetch("./movies.json")
   // then handle the promise, what comes back is the response object
-  // .then(response);
-  //   .then((response) => {
-  //     console.log(response);
-  //   })
-  ///// to get to the data return the response in json
-  //   .then((response) => {
-  //     return response.json();
-  //   })
-  //   .then((data) => {
-  //     console.log(data);
-  //   });
-  // another shorter way of writing it
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
   });
+// have to do it a little differently for a text file
+fetch("./test.txt")
+  .then((response) => response.text())
+  .then((data) => console.log(data));
