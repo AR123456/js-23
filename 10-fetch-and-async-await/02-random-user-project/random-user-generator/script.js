@@ -3,6 +3,7 @@ fetch("https://randomuser.me/api/")
   .then((response) => response.json())
 
   .then((data) => {
+    console.log(data.results[0]);
     document.querySelector(".flex").innerHTML = `
     <div class="flex">
     <img
@@ -14,15 +15,15 @@ fetch("https://randomuser.me/api/")
         <span class="font-bold">Name: </span>${data.results[0].name.first} ${data.results[0].name.last} 
       </p>
       <p class="text-xl">
-        <span class="font-bold">Email: </span> sarawilson@gmail.com
+        <span class="font-bold">Email: </span> ${data.results[0].email}
       </p>
       <p class="text-xl">
-        <span class="font-bold">Phone: </span> (555) 555-5555
+        <span class="font-bold">Phone: </span> ${data.results[0].phone}
       </p>
       <p class="text-xl">
-        <span class="font-bold">Location: </span> Boston MA
+        <span class="font-bold">Location: </span> ${data.results[0].address}
       </p>
-      <p class="text-xl"><span class="font-bold">Age: </span> 30</p>
+      <p class="text-xl"><span class="font-bold">Age: </span>${data.results[0].age}</p>
     </div>
   </div>
   
