@@ -8,7 +8,7 @@ fetch("https://randomuser.me/api/")
     <div class="flex">
     <img
       class="w-48 h-48 rounded-full mr-8"
-      src="https://randomuser.me/api/portraits/women/45.jpg"
+      src= ${data.results[0].picture.large}
     />
     <div class="space-y-3">
       <p class="text-xl">
@@ -23,7 +23,7 @@ fetch("https://randomuser.me/api/")
       <p class="text-xl">
         <span class="font-bold">Location: </span> ${data.results[0].location.city},${data.results[0].location.state}
       </p>
-      <p class="text-xl"><span class="font-bold">Age: </span>${data.results[0].age}</p>
+      <p class="text-xl"><span class="font-bold">Age: </span>${data.results[0].dob.age}</p>
     </div>
   </div>
   
