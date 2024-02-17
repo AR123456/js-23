@@ -1,11 +1,14 @@
 document.body.style.backgroundColor = "purple";
 const generate = document.getElementById("generate");
+const spinner = document.querySelector(".spinner");
 const getUser = () => {
   // fetch data
   fetch("https://randomuser.me/api/")
     .then((response) => response.json())
+    .then(spinner.toggleAttribute("hidden"))
 
     .then((data) => {
+      spinner.toggleAttribute("hidden");
       console.log(data.results[0]);
       if (data.results[0].gender === "female") {
         document.body.style.backgroundColor = "purple";
