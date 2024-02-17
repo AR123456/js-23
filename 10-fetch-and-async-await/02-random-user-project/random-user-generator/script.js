@@ -1,3 +1,4 @@
+document.body.style.backgroundColor = "purple";
 const generate = document.getElementById("generate");
 const getUser = () => {
   // fetch data
@@ -6,6 +7,11 @@ const getUser = () => {
 
     .then((data) => {
       console.log(data.results[0]);
+      if (data.results[0].gender === "female") {
+        document.body.style.backgroundColor = "purple";
+      } else if (data.results[0].gender === "male") {
+        document.body.style.backgroundColor = "blue";
+      }
       document.querySelector(".flex").innerHTML = `
       <div class="flex">
       <img
