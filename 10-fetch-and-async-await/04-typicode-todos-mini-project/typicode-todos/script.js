@@ -5,7 +5,9 @@ getTodos = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      todos.innerHTML = data[0].title;
+      for (let i = 0; i < data.length; i++) {
+        todos.innerHTML = `<p>${data[i].title}</p>`;
+      }
     });
 };
 getTodos();
