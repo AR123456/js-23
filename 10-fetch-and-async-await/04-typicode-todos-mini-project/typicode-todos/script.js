@@ -5,9 +5,11 @@ getTodos = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      for (let i = 0; i < data.length; i++) {
-        todos.innerHTML = `<p>${data[i].title}</p>`;
-      }
+      data.forEach((todo) => {
+        const button = document.createElement("button");
+        button.innerText = todo.title;
+        todos.append(button);
+      });
     });
 };
 getTodos();
