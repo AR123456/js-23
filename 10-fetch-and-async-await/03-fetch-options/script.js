@@ -12,14 +12,12 @@ const createPost = ({ title, body }) => {
     }),
     headers: {
       // content type goes in header
-      "": "",
+      "Content-Type": "application/json",
+      // can be used to validate who you are and what you can access
       token: "abc123",
     },
   })
-    .then((res) => {
-      res.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 };
+createPost({ title: "My Post", body: "This is my Post" });
