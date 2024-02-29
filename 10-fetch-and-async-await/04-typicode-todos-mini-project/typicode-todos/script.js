@@ -4,15 +4,14 @@ const todoInput = document.getElementById("title");
 const todoList = document.getElementById("todo-list");
 
 const getTodos = () => {
-  fetch("https://jsonplaceholder.typicode.com/todos/5")
+  fetch("https://jsonplaceholder.typicode.com/todos/?_limit=5")
     .then((res) => res.json())
-    .then((data) => console.log(data))
-    .then((data) => showTodos(data));
+    // .then((data) => console.log(data))
+    .then((data) => data.forEach((todo) => showTodos(todo)));
 };
-const showTodos = (data) => {
-  todoList.innerHTML += `<div>${data}</div>
-  <div>body</div>
-  <div>userid</div>`;
+const showTodos = (todo) => {
+  todoList.innerHTML += ` 
+  <div>${todo.title}</div>`;
 };
 
 submitButton.addEventListener("click", getTodos());
