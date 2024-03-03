@@ -19,8 +19,14 @@ const getTodos = () => {
 };
 
 // add event listoner to dom
-const createTodo = () => {
-  //
+const createTodo = (e) => {
+  // stop default submit
+  e.preventDefault();
+  // in here e.target is the form
+  // e.target.firstElementChild is the text input - but why not just get the input value?
+  // console.log(e.target.firstElementChild.value);
+  // the newToDo const is what will be sent to the server
+  const newTodo = {};
 };
 // fire this off when the page loads
 const init = () => {
