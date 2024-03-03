@@ -9,12 +9,15 @@ const getTodos = () => {
     // .then((data) => console.log(data))
     .then((data) => data.forEach((todo) => showTodos(todo)));
 };
-const addTodos = ({ title }) => {
+const addTodos = (e) => {
+  // e.preventDefault();
+  const getFormData = {
+    title: todoInput.value,
+  };
+  console.log(getFormData);
   fetch("https://jsonplaceholder.typicode.com/todos/", {
     method: "POST",
-    body: JSON.stringify({
-      title: "My First Todo",
-    }),
+    body: JSON.stringify(getFormData),
     headers: {
       "Content-Type": "application/json",
     },
@@ -27,4 +30,4 @@ const showTodos = (todo) => {
   todoList.innerHTML += ` 
   <div >${todo.title}</div>`;
 };
-submitButton.addEventListener("click", addTodos({ title: "my first todo " }));
+submitButton.addEventListener("submit", addTodos());
