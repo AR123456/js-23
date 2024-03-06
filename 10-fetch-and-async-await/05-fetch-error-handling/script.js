@@ -42,10 +42,12 @@ fetch("http://httpstat.us/404")
     }
     return response;
   })
+  // this will not run if response is not ok
   .then(() => {
     console.log("success");
   })
-  // use the catch here to log the error
+  // use the catch here to log the error if response is not ok
+  // passing the error created with throw new Error()
   .catch((error) => {
     console.log(error);
   });
