@@ -9,8 +9,13 @@ const promise = new Promise((resolve, reject) => {
 // promise.then((data) => console.log(data));
 
 // using async await
-async function getPromise() {
+// async function getPromise() {
+//   const response = await promise;
+//   console.log(response);
+// }
+const getPromise = async () => {
   const response = await promise;
   console.log(response);
-}
+};
+
 getPromise();
