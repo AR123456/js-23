@@ -1,9 +1,10 @@
 function fetchUser() {
   showSpinner();
-  fetch('https://randomuser.me/api')
+  fetch("https://randomuser.me/api")
+    // adding a check for a response that is not 200 or ok
     .then((res) => {
       if (!res.ok) {
-        throw new Error('Request Failed');
+        throw new Error("Request Failed");
       }
 
       return res.json();
@@ -14,19 +15,19 @@ function fetchUser() {
     })
     .catch((error) => {
       hideSpinner();
-      document.querySelector('#user').innerHTML = `
+      document.querySelector("#user").innerHTML = `
       <p class="text-xl text-center text-red-500 mb-5">
       ${error}</p>`;
     });
 }
 
 function displayUser(user) {
-  const userDisplay = document.querySelector('#user');
+  const userDisplay = document.querySelector("#user");
 
-  if (user.gender === 'female') {
-    document.body.style.backgroundColor = 'rebeccapurple';
+  if (user.gender === "female") {
+    document.body.style.backgroundColor = "rebeccapurple";
   } else {
-    document.body.style.backgroundColor = 'steelblue';
+    document.body.style.backgroundColor = "steelblue";
   }
 
   userDisplay.innerHTML = `
@@ -57,13 +58,13 @@ function displayUser(user) {
 }
 
 function showSpinner() {
-  document.querySelector('.spinner').style.display = 'block';
+  document.querySelector(".spinner").style.display = "block";
 }
 
 function hideSpinner() {
-  document.querySelector('.spinner').style.display = 'none';
+  document.querySelector(".spinner").style.display = "none";
 }
 
-document.querySelector('#generate').addEventListener('click', fetchUser);
+document.querySelector("#generate").addEventListener("click", fetchUser);
 
 fetchUser();
