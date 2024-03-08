@@ -46,6 +46,11 @@ const toggleCompleted = (e) => {
     updateTodo(e.target.dataset.id, e.target.classList.contains("done"));
   }
 };
+
+const updateTodo = (id, completed) => {
+  // fetch in here
+  fetch(`${apiUrl}/${id}`, {}).then().then();
+};
 // fire this off when the page loads
 const init = () => {
   document.addEventListener("DOMContentLoaded", getTodos);
