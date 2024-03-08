@@ -1,7 +1,15 @@
 const apiUrl = "https://jsonplaceholder.typicode.com/todos";
 
+const getTodos = () => {
+  fetch(apiUrl + "?_limit=5")
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((todo) => addTodoToDom(todo));
+    });
+};
 const addTodoToDom = (todo) => {
   const div = document.createElement("div");
+  div.classList.add("todo");
   div.appendChild(document.createTextNode(todo.title));
   // custom data set attribute
   div.setAttribute("data-id", todo.id);
@@ -10,15 +18,7 @@ const addTodoToDom = (todo) => {
   }
   document.getElementById("todo-list").appendChild(div);
 };
-const getTodos = () => {
-  fetch(apiUrl + "?_limit=5")
-    .then((res) => res.json())
-    .then((data) => {
-      data.forEach((todo) => addTodoToDom(todo));
-    });
-};
-
-// add event listoner to dom
+// post request add a todo
 const createTodo = (e) => {
   // stop default submit
   e.preventDefault();
@@ -38,11 +38,22 @@ const createTodo = (e) => {
     .then((res) => res.json())
     .then((data) => addTodoToDom(data));
 };
+// ssingle click to mark completed
+const toggleCompleted = (e) => {
+  if (e.target.classList.contains("todo")) {
+    e.target.classList.toggle("done");
+
+    updateTodo(e.target.dataset.id, e.target.classList.contains("done"));
+  }
+};
 // fire this off when the page loads
 const init = () => {
   document.addEventListener("DOMContentLoaded", getTodos);
   //   submit event listener  on form
   document.querySelector("#todo-form").addEventListener("submit", createTodo);
+  document
+    .querySelector("#todo-list")
+    .addEventListener("click", toggleCompleted);
 };
 
 init();
