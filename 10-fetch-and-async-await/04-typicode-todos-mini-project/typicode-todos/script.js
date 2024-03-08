@@ -25,13 +25,23 @@ const createTodo = (e) => {
   // in here e.target is the form
   // e.target.firstElementChild is the text input - but why not just get the input value?
   // console.log(e.target.firstElementChild.value);
-  // the newToDo const is what will be sent to the server
-  const newTodo = {};
+  // the newToDo const is what will be sent to the server in the body of the post request
+  const newTodo = {
+    title: e.target.firstElementChild.value,
+    completed: false,
+  };
+  fetch(apiUrl, {
+    method: "POST",
+    body: JSON.stringify(newTodo),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((res) => res.json())
+    .then((data) => addTodoToDom(data));
 };
 // fire this off when the page loads
 const init = () => {
   document.addEventListener("DOMContentLoaded", getTodos);
-  //   submit event listoner on form
+  //   submit event listener  on form
   document.querySelector("#todo-form").addEventListener("submit", createTodo);
 };
 
