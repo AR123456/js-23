@@ -49,7 +49,13 @@ const toggleCompleted = (e) => {
 
 const updateTodo = (id, completed) => {
   // fetch in here
-  fetch(`${apiUrl}/${id}`, {}).then().then();
+  fetch(`${apiUrl}/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({ completed }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 };
 // fire this off when the page loads
 const init = () => {
