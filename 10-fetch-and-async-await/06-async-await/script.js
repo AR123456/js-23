@@ -7,7 +7,6 @@ const promise = new Promise((resolve, reject) => {
 });
 //using .then
 // promise.then((data) => console.log(data));
-
 // using async await
 // async function getPromise() {
 //   const response = await promise;
@@ -24,29 +23,10 @@ const getUsers = async () => {
   const data = await res.json();
   console.log(data);
 };
-getUsers();
-/////////////
-/// example of nested from chat gpt
-// async function outerFunction() {
-//   console.log("Start outerFunction");
-
-//   async function innerFunction() {
-//     console.log("Start innerFunction");
-//     const result = await someAsyncOperation();
-//     console.log("Result from innerFunction:", result);
-//   }
-
-//   await innerFunction();
-
-//   console.log("End outerFunction");
-// }
-
-// async function someAsyncOperation() {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve("Async operation completed");
-//     }, 1000);
-//   });
-// }
-
-// outerFunction();
+// getUsers();
+const getPosts = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
+  console.log(data);
+};
+getPosts();
