@@ -16,21 +16,39 @@ function onAddItemSubmit(e) {
     alert("Please add item");
     return;
   }
-
+  addItemToDOM(newItem);
+  addItemToStorage(newItem);
   checkUI();
   // after adding to dom clear the input box
   itemInput.value = "";
 }
-function addItemToDom(item) {
+function addItemToDOM(item) {
   // list item
   const li = document.createElement("li");
-  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(item));
   // button - a function that takes in css classes and makes a button
   const button = createButton("remove-item btn-link text-red");
   li.appendChild(button);
   // add to dom
   itemList.appendChild(li);
 }
+// add to local storage
+function addItemToStorage(item) {
+  // array of list of items stringified will jason.parse when we get it out of local storage
+
+  let itemsFromStorage;
+  // are there any items in local storage ?
+  if (localStorage.getItem("items") === null) {
+    itemsFromStorage = [];
+  } else {
+    // get stuff from local storage, which is a string and make it an array
+    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
+  }
+  itemsFromStorage.push(item);
+  // re stringify and put back in local storage
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+}
+
 // use ths in the addItem function
 const createButton = (classes) => {
   const button = document.createElement("button");
@@ -102,7 +120,6 @@ function checkUI() {
     itemFilter.style.display = "block";
   }
 }
-// array of list of items stringified will jason.parse when we get it out of local storage
 
 // Event Listeners
 // listen for submit on form
