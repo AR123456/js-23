@@ -1,15 +1,14 @@
 # Shopping List
 
-Vanilla JavaScript shopping list app
-
-- Add Items to list via form
-  -Remove items from list by clicking X
-  -Clear all items with "Clear" button
-  -If there are no items in the list do not show clear all or filter button
-
-  -Filter items by typing in filter field
-  -Add to local storage
-
-- ability to edit items
+- add items to list via the form
+- remove items from list using x button
+- filter input by typing in field
+- persist in local storage
+- add edit mode
 - ability to update item
-  -deploy to netlify
+- deploy to Netlify
+  Vanilla JavaScript shopping list app from my Modern JS From The Beginning course.
+
+This project was created to focus on working with the DOM, events, state, local storage and other fundamentals of JavaScript.
+
+<img src="images/screen.png" width="400">

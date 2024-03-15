@@ -1,93 +1,115 @@
-// variables
-const item = document.querySelector("#item-input");
-const itemFilterInput = document.querySelector("#filter");
-const liItem = document.querySelector("li");
-const deleteButtons = document.querySelectorAll(".remove-item");
+// get elements from DOM
+const itemForm = document.getElementById("item-form");
+const itemInput = document.getElementById("item-input");
+const itemList = document.getElementById("item-list");
+const clearBtn = document.getElementById("clear");
+const itemFilter = document.getElementById("filter");
+const formBtn = itemForm.querySelector("button");
 
-const clearBtn = document.querySelector("#clear");
-const form = document.querySelector("#item-form");
-const ul = document.querySelector("ul");
-// const li = document.querySelectorAll("li");
-//Functions
-
-const onSubmit = (e) => {
+// functions
+function onAddItemSubmit(e) {
+  // dont submit
   e.preventDefault();
-  // TODO validate input trim
-  const formData = new FormData(form);
-  const item = formData.get("item").trim();
-  if (item === "") {
-    alert("Add an item");
+  const newItem = itemInput.value;
+  // basic validation
+  if (newItem === "") {
+    alert("Please add item");
     return;
   }
-  // TODO put into local storage
-  createListItem(item);
 
-  form.reset();
-};
-const createListItem = (item) => {
-  // add to DOM
+  checkUI();
+  // after adding to dom clear the input box
+  itemInput.value = "";
+}
+function addItemToDom(item) {
+  // list item
   const li = document.createElement("li");
-  li.innerHTML = `
-${item}
- <button class="remove-item btn-link text-red">
-   <i class="fa-solid fa-xmark"></i>
- </button>
-`;
-  document.querySelector(".items").appendChild(li);
+  li.appendChild(document.createTextNode(newItem));
+  // button - a function that takes in css classes and makes a button
+  const button = createButton("remove-item btn-link text-red");
+  li.appendChild(button);
+  // add to dom
+  itemList.appendChild(li);
+}
+// use ths in the addItem function
+const createButton = (classes) => {
+  const button = document.createElement("button");
+  button.className = classes;
+  const icon = createIcon("fa-solid fa-xmark");
+  button.appendChild(icon);
+  return button;
 };
-// deleting items -
-const onDelete = (e) => {
-  // clicking on the Ul so need to traverse dom and only remove the element with remove class
+// use this in the addItem function
+function createIcon(classes) {
+  const icon = document.createElement("i");
+  icon.className = classes;
+  return icon;
+}
+function removeItem(e) {
+  // click on x but delete the list item which is 2 parents up
   // console.log(e.target.parentElement.parentElement);
+  // put this in an if to check if the remove-item class is on the button
   if (e.target.parentElement.classList.contains("remove-item")) {
+    // traverse the DOM to get to the li
     e.target.parentElement.parentElement.remove();
   }
-};
-// clear button that clears all the items from the DOM
-const onClear = () => {
-  if (confirm("You are about to delete all, are you sure?") == true) {
-    while (ul.firstChild) {
-      ul.removeChild(ul.firstChild);
+  checkUI();
+}
+// delete individual items
+function clearItems() {
+  if (confirm("You are about to delete all,are you sure?") == true) {
+    // using a while loop
+    while (itemList.firstChild) {
+      itemList.removeChild(itemList.firstChild);
     }
   }
-};
-
-// filter
-const onFilter = (e) => {
-  // typed in letters
+  checkUI();
+}
+function filterItems(e) {
+  // for ease of comparison make all lower case
   const text = e.target.value.toLowerCase();
-  // list
-  const items = document.querySelectorAll("li");
+  // get the list items for comparison - items is a node list
+  const items = itemList.querySelectorAll("li");
   items.forEach((item) => {
-    // get the text in the li which is the first child
+    // the first child is the text
     const itemName = item.firstChild.textContent.toLowerCase();
+    // using index of to determine if the itemName contains the text const
+    // -1 is what indexOf returns if the passed in value is not in the array
+    // if (itemName.indexOf(text) != -1) {
+    // or use includes()
     if (itemName.includes(text)) {
+      // add(keep the style of flex)
       item.style.display = "flex";
     } else {
+      // set display to none so the non match is not seen
       item.style.display = "none";
     }
   });
-};
-//
-const checkUI = () => {
-  // check the DOM for li 's and if none found dont show clear and filter otherwise do show
-  const items = ul.querySelectorAll("li");
+
+  console.log(text);
+}
+
+// dont show clear and filter if there are no li on the page
+function checkUI() {
+  // this needs to be defined outside of global scope
+  //querySelectorAll returns a node list -
+  const items = itemList.querySelectorAll("li");
   if (items.length === 0) {
     clearBtn.style.display = "none";
-    itemFilterInput.display = "none";
+    itemFilter.style.display = "none";
   } else {
     clearBtn.style.display = "block";
-    itemFilterInput.display = "block";
+    itemFilter.style.display = "block";
   }
-};
-// Event listeners call the event listeners after the functions are declared
-// on submit
-form.addEventListener("submit", onSubmit);
-//  clearBTN
-clearBtn.addEventListener("click", onClear);
-// delete item
-ul.addEventListener("click", onDelete);
-// filter
-itemFilterInput.addEventListener("input", onFilter);
-// check UI state on page load
+}
+// array of list of items stringified will jason.parse when we get it out of local storage
+
+// Event Listeners
+// listen for submit on form
+itemForm.addEventListener("submit", onAddItemSubmit);
+// to del with the red x on the individual list item put the event on the item list ul and target what is inside that
+itemList.addEventListener("click", removeItem);
+clearBtn.addEventListener("click", clearItems);
+// this could be key up or key down , here using the input event
+itemFilter.addEventListener("input", filterItems);
 checkUI();
