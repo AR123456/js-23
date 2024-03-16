@@ -6,9 +6,14 @@ const clearBtn = document.getElementById("clear");
 const itemFilter = document.getElementById("filter");
 const formBtn = itemForm.querySelector("button");
 
+function displayItems() {
+  const itemsFromStorage = getItemsFromStorage();
+
+  itemsFromStorage.forEach((item) => addItemToDOM(item));
+}
+
 // functions
 function onAddItemSubmit(e) {
-  // dont submit
   e.preventDefault();
   const newItem = itemInput.value;
   // basic validation
@@ -18,38 +23,17 @@ function onAddItemSubmit(e) {
   }
   // add to dom
   addItemToDOM(newItem);
-  // add to local storage
   addItemToStorage(newItem);
   checkUI();
-  // after adding to dom clear the input box
+  // clear the input box
   itemInput.value = "";
 }
 function addItemToDOM(item) {
-  // list item
   const li = document.createElement("li");
   li.appendChild(document.createTextNode(item));
-  // button - a function that takes in css classes and makes a button
   const button = createButton("remove-item btn-link text-red");
   li.appendChild(button);
-  // add to dom
   itemList.appendChild(li);
-}
-// add to local storage
-function addItemToStorage(item) {
-  // array of list of items stringified will jason.parse when we get it out of local storage
-
-  let itemsFromStorage;
-  // are there any items in local storage ?
-  if (localStorage.getItem("items") === null) {
-    itemsFromStorage = [];
-  } else {
-    // get stuff from local storage, which is a string and make it an array
-    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
-  }
-  // add to array
-  itemsFromStorage.push(item);
-  // re stringify and put back in local storage
-  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
 }
 
 // use ths in the addItem function
@@ -66,9 +50,30 @@ function createIcon(classes) {
   icon.className = classes;
   return icon;
 }
+// add to local storage
+function addItemToStorage(item) {
+  const itemsFromStorage = getItemsFromStorage();
+  // add to array
+  itemsFromStorage.push(item);
+  // re stringify and put back in local storage
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+}
+
+function getItemsFromStorage() {
+  // array of list of items stringified will jason.parse when we get it out of local storage
+  let itemsFromStorage;
+  // are there any items in local storage ?
+  if (localStorage.getItem("items") === null) {
+    itemsFromStorage = [];
+  } else {
+    // get stuff from local storage, which is a string and make it an array
+    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
+  }
+  return itemsFromStorage;
+}
+
 function removeItem(e) {
   // click on x but delete the list item which is 2 parents up
-  // console.log(e.target.parentElement.parentElement);
   // put this in an if to check if the remove-item class is on the button
   if (e.target.parentElement.classList.contains("remove-item")) {
     // traverse the DOM to get to the li
@@ -79,7 +84,6 @@ function removeItem(e) {
 // delete individual items
 function clearItems() {
   if (confirm("You are about to delete all,are you sure?") == true) {
-    // using a while loop
     while (itemList.firstChild) {
       itemList.removeChild(itemList.firstChild);
     }
@@ -147,4 +151,6 @@ itemList.addEventListener("click", removeItem);
 clearBtn.addEventListener("click", clearItems);
 // this could be key up or key down , here using the input event
 itemFilter.addEventListener("input", filterItems);
+// when the page loads get stuff from local storage
+document.addEventListener("DOMContentLoaded", displayItems);
 checkUI();
