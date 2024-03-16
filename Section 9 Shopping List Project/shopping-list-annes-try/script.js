@@ -142,15 +142,19 @@ function checkUI() {
     itemFilter.style.display = "block";
   }
 }
-
-// Event Listeners
-// listen for submit on form
-itemForm.addEventListener("submit", onAddItemSubmit);
-// to del with the red x on the individual list item put the event on the item list ul and target what is inside that
-itemList.addEventListener("click", removeItem);
-clearBtn.addEventListener("click", clearItems);
-// this could be key up or key down , here using the input event
-itemFilter.addEventListener("input", filterItems);
-// when the page loads get stuff from local storage
-document.addEventListener("DOMContentLoaded", displayItems);
-checkUI();
+// moving out of global scope and into this init function
+function init() {
+  // Event Listeners
+  // listen for submit on form
+  itemForm.addEventListener("submit", onAddItemSubmit);
+  // to del with the red x on the individual list item put the event on the item list ul and target what is inside that
+  itemList.addEventListener("click", removeItem);
+  clearBtn.addEventListener("click", clearItems);
+  // this could be key up or key down , here using the input event
+  itemFilter.addEventListener("input", filterItems);
+  // when the page loads get stuff from local storage
+  document.addEventListener("DOMContentLoaded", displayItems);
+  // don't show clear and filter if there are no items
+  checkUI();
+}
+init();
