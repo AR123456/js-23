@@ -16,7 +16,9 @@ function onAddItemSubmit(e) {
     alert("Please add item");
     return;
   }
+  // add to dom
   addItemToDOM(newItem);
+  // add to local storage
   addItemToStorage(newItem);
   checkUI();
   // after adding to dom clear the input box
@@ -44,6 +46,7 @@ function addItemToStorage(item) {
     // get stuff from local storage, which is a string and make it an array
     itemsFromStorage = JSON.parse(localStorage.getItem("items"));
   }
+  // add to array
   itemsFromStorage.push(item);
   // re stringify and put back in local storage
   localStorage.setItem("items", JSON.stringify(itemsFromStorage));
@@ -103,9 +106,24 @@ function filterItems(e) {
       item.style.display = "none";
     }
   });
-
-  console.log(text);
 }
+// function filterItems(e) {
+//   // another way to filter from Wil
+//   const items = itemList.querySelectorAll("li");
+//   const text = e.target.value.toLowerCase();
+//   // if letter is anywhere in the word, not neccisarily in the order type
+//   items.forEach((item) => {
+//     const itemName = item.firstChild.textContent.toLowerCase();
+//     for (const letter of text) {
+//       if (itemName.includes(letter)) {
+//         item.style.display = "flex";
+//       } else {
+//         item.style.display = "none";
+//       }
+//     }
+//   });
+//   console.log(text);
+// }
 
 // dont show clear and filter if there are no li on the page
 function checkUI() {
