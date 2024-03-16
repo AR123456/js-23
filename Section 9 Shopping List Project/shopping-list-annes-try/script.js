@@ -37,7 +37,15 @@ function addItemToDOM(item) {
 // add to local storage
 function addItemToStorage(item) {
   // array of list of items stringified will jason.parse when we get it out of local storage
-
+  const itemsFromStorage = getItemsFromStorage;
+  // add to array
+  itemsFromStorage.push(item);
+  // re stringify and put back in local storage
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+}
+// get what is in local storage to display in the DOM
+function getItemsFromStorage() {
+  // array of list of items stringified will jason.parse when we get it out of local storage
   let itemsFromStorage;
   // are there any items in local storage ?
   if (localStorage.getItem("items") === null) {
@@ -46,12 +54,8 @@ function addItemToStorage(item) {
     // get stuff from local storage, which is a string and make it an array
     itemsFromStorage = JSON.parse(localStorage.getItem("items"));
   }
-  // add to array
-  itemsFromStorage.push(item);
-  // re stringify and put back in local storage
-  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+  return itemsFromStorage;
 }
-
 // use ths in the addItem function
 const createButton = (classes) => {
   const button = document.createElement("button");
