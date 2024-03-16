@@ -8,8 +8,8 @@ const formBtn = itemForm.querySelector("button");
 
 function displayItems() {
   const itemsFromStorage = getItemsFromStorage();
-
   itemsFromStorage.forEach((item) => addItemToDOM(item));
+  checkUI();
 }
 
 // functions
