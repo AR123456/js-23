@@ -71,15 +71,28 @@ function getItemsFromStorage() {
   }
   return itemsFromStorage;
 }
-
-function removeItem(e) {
-  // click on x but delete the list item which is 2 parents up
-  // put this in an if to check if the remove-item class is on the button
+function onClickItem(e) {
   if (e.target.parentElement.classList.contains("remove-item")) {
-    // traverse the DOM to get to the li
-    e.target.parentElement.parentElement.remove();
+    removeItem(e.target.parentElement.parentElement);
   }
-  checkUI();
+}
+function removeItem(item) {
+  if (confirm("Are you sure?")) {
+    // DOM
+    item.remove();
+    // local storage
+    removeItemFromStorage(item.textContent);
+    checkUI();
+  }
+}
+function removeItemFromStorage() {
+  // get the stuff from local storage which is a string
+  const itemsFromStorage = getItemsFromStorage();
+
+  // remove the item from that array
+  itemsFromStorage.pop();
+  // re stringify and put back in local storage
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
 }
 // delete individual items
 function clearItems() {
@@ -147,8 +160,8 @@ function init() {
   // Event Listeners
   // listen for submit on form
   itemForm.addEventListener("submit", onAddItemSubmit);
-  // to del with the red x on the individual list item put the event on the item list ul and target what is inside that
-  itemList.addEventListener("click", removeItem);
+  // to remove or edit an item
+  itemList.addEventListener("click", onClickItem);
   clearBtn.addEventListener("click", clearItems);
   // this could be key up or key down , here using the input event
   itemFilter.addEventListener("input", filterItems);
