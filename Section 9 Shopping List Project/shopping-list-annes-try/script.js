@@ -99,6 +99,8 @@ function clearItems() {
       itemList.removeChild(itemList.firstChild);
     }
   }
+  // remove from local
+  localStorage.removeItem("items");
   checkUI();
 }
 function filterItems(e) {
