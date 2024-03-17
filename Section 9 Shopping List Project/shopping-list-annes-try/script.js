@@ -85,13 +85,11 @@ function removeItem(item) {
     checkUI();
   }
 }
-function removeItemFromStorage() {
-  // get the stuff from local storage which is a string
-  const itemsFromStorage = getItemsFromStorage();
-
-  // remove the item from that array
-  itemsFromStorage.pop();
-  // re stringify and put back in local storage
+function removeItemFromStorage(item) {
+  let itemsFromStorage = getItemsFromStorage();
+  // filter out item to be removed - this will return a new array with the item removed
+  itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
+  // re send to local storage
   localStorage.setItem("items", JSON.stringify(itemsFromStorage));
 }
 // delete individual items
