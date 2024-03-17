@@ -22,6 +22,19 @@ function onAddItemSubmit(e) {
     alert("Please add item");
     return;
   }
+  // check to see if app is in edit mode
+  if (isEditMode) {
+    // remove the item from local storage and DOM , then put in the new item
+    // all you can do with local storage is add and remove
+    const itemToEdit = itemList.querySelector(".edit-mode");
+    removeItemFromStorage(itemToEdit.text);
+    // remove edit mode from li
+    itemToEdit.classList.remove("edit-mode");
+    // remove from DOM
+    itemToEdit.remove();
+    // take app out of edit mode
+    isEditMode = false;
+  }
   // add to dom
   addItemToDOM(newItem);
   addItemToStorage(newItem);
@@ -178,6 +191,9 @@ function checkUI() {
     clearBtn.style.display = "block";
     itemFilter.style.display = "block";
   }
+  formBtn.innerHTML = "<i class='fa-solid fa-plus'></i> Add Item";
+  formBtn.style.backgroundColor = "#333";
+  isEditMode = false;
 }
 // moving out of global scope and into this init function
 function init() {
