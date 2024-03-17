@@ -5,6 +5,7 @@ const itemList = document.getElementById("item-list");
 const clearBtn = document.getElementById("clear");
 const itemFilter = document.getElementById("filter");
 const formBtn = itemForm.querySelector("button");
+let isEditMode = false;
 
 function displayItems() {
   const itemsFromStorage = getItemsFromStorage();
@@ -71,9 +72,32 @@ function getItemsFromStorage() {
   }
   return itemsFromStorage;
 }
+// onClick handler
 function onClickItem(e) {
+  // was the click on the red x?
   if (e.target.parentElement.classList.contains("remove-item")) {
     removeItem(e.target.parentElement.parentElement);
+  } else {
+    // call the set item on the list item
+    setItemToEdit(e.target);
+  }
+}
+function setItemToEdit(item) {
+  isEditMode = true;
+  // if any of the items is currently in edit mode, remove it so only editing one item at a time
+  itemList
+    .querySelectorAll("li")
+    .forEach((i) => i.classList.remove("edit-mode"));
+  // make sure that a click on the white space doesent
+  //add all the items, use localName so I can keep lower case
+  if (item.localName === "li") {
+    // give visual feedback that we are in edit mode
+    item.classList.add("edit-mode");
+    // change text and icon on the form button
+    formBtn.innerHTML = `<i class="fa-solid fa-pen"></i> Update Item`;
+    formBtn.style.backgroundColor = "#228B22";
+    // put the value of the item in the form input field
+    itemInput.value = item.textContent;
   }
 }
 function removeItem(item) {
