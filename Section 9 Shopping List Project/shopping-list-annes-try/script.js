@@ -34,6 +34,11 @@ function onAddItemSubmit(e) {
     itemToEdit.remove();
     // take app out of edit mode
     isEditMode = false;
+  } else {
+    if (checkIfItemExists(newItem)) {
+      alert("this is a duplicate");
+      return;
+    }
   }
   // add to dom
   addItemToDOM(newItem);
@@ -67,6 +72,7 @@ function createIcon(classes) {
 // add to local storage
 function addItemToStorage(item) {
   const itemsFromStorage = getItemsFromStorage();
+
   // add to array
   itemsFromStorage.push(item);
   // re stringify and put back in local storage
@@ -94,6 +100,12 @@ function onClickItem(e) {
     // call the set item on the list item
     setItemToEdit(e.target);
   }
+}
+// check for duplicates
+function checkIfItemExists(item) {
+  const itemsFromStorage = getItemsFromStorage();
+  // includes array method
+  return itemsFromStorage.includes(item);
 }
 function setItemToEdit(item) {
   isEditMode = true;
