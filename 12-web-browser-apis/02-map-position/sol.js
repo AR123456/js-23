@@ -1,18 +1,33 @@
-const map = L.map('map').setView([0, 0], 2);
+const canvas = document.getElementById('my-canvas');
+const ctx = canvas.getContext('2d');
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
+// Draw rectangle
+ctx.fillStyle = 'green';
+ctx.fillRect(10, 10, 150, 100);
 
-const marker = L.marker([0, 0]).addTo(map);
+// Draw circle
+ctx.fillStyle = 'red';
+ctx.arc(300, 300, 100, 0, Math.PI * 2);
+ctx.fill();
 
-navigator.geolocation.getCurrentPosition(function (pos) {
-  const lat = pos.coords.latitude;
-  const lng = pos.coords.longitude;
+// Draw lines
+ctx.beginPath();
+ctx.strokeStyle = 'orange';
+ctx.lineWidth = 5;
+ctx.moveTo(10, 10);
+ctx.lineTo(300, 300);
+ctx.stroke();
 
-  marker.setLatLng([lat, lng]).update();
-  map.setView([lat, lng], 13);
+// Draw text
+ctx.font = '30px Arial';
+ctx.lineWidth = 1;
+ctx.fillStyle = 'blue';
+ctx.strokeStyle = 'blue';
+ctx.fillText('Hello World', 300, 100, 300);
+ctx.strokeText('Hello World', 300, 500, 300);
 
-  marker.bindPopup('<strong>Hello World</strong> <br> This is my location');
-});
+// Draw image
+const image = document.querySelector('img');
+image.style.display = 'none';
+
+image.addEventListener('load', () => ctx.drawImage(image, 250, 250, 100, 100));
