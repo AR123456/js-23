@@ -12,3 +12,7 @@ stop.addEventListener("click", () => {
   // resetting to 0 brings to begining of song
   audio.currentTime = 0;
 });
+// display the tracktime
+audio.addEventListener("timeupdate", () => {
+  currentTime.innerText = audio.currentTime;
+});
