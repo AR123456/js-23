@@ -16,3 +16,5 @@ stop.addEventListener("click", () => {
 audio.addEventListener("timeupdate", () => {
   currentTime.innerText = audio.currentTime;
 });
+// input slider so tag change event
+volume.addEventListener("change", () => (audio.volume = volume.value));
