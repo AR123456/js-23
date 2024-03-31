@@ -24,8 +24,35 @@ function clock() {
   ctx.arc(0, 0, 142, 0, Math.PI * 2, true); // circular  clock face
   ctx.stroke();
   ctx.fill();
-  ctx.restore();
+  ctx.restore(); // restore on clock face
   //adding the tickmarks
+  ctx.save();
+  // hour tick marks
+  for (let i = 0; i < 12; i++) {
+    ctx.beginPath();
+    // rotate a bit with each loop
+    ctx.rotate(Math.PI / 6);
+    ctx.moveTo(100, 0);
+    ctx.lineTo(120, 0);
+    ctx.stroke();
+  }
+  ctx.restore();
+  // minute tick marks
+  ctx.save();
+  ctx.lineWidth = 4;
+  for (let i = 0; i < 60; i++) {
+    // only draw the minutes if it is not an hour
+    if (i % 5 !== 0) {
+      ctx.beginPath();
+
+      ctx.moveTo(117, 0);
+      ctx.lineTo(120, 0);
+      ctx.stroke();
+    }
+    // rotate a bit with each loop even if not drawing line
+    ctx.rotate(Math.PI / 30);
+  }
+  ctx.restore();
   ctx.restore(); // restore default state run last
 }
 clock();
