@@ -44,7 +44,6 @@ function clock() {
     // only draw the minutes if it is not an hour
     if (i % 5 !== 0) {
       ctx.beginPath();
-
       ctx.moveTo(117, 0);
       ctx.lineTo(120, 0);
       ctx.stroke();
@@ -53,6 +52,11 @@ function clock() {
     ctx.rotate(Math.PI / 30);
   }
   ctx.restore();
+  /////// get current time
+  const hr = now.getHours() % 12;
+  const min = now.getMinutes();
+  const sec = now.getSeconds();
+
   ctx.restore(); // restore default state run last
 }
 clock();
