@@ -69,12 +69,21 @@ function clock() {
   ctx.lineTo(80, 0);
   ctx.stroke();
   ctx.restore();
-  //
   ////  draw the minute hand
   ctx.save();
   ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec);
   ctx.strokeStyle = "#800000";
   ctx.lineWidth = 8;
+  ctx.beginPath();
+  ctx.moveTo(-28, 0);
+  ctx.lineTo(112, 0);
+  ctx.stroke();
+  ctx.restore();
+  //// draw second hand
+  ctx.save();
+  ctx.rotate((Math.PI / 30) * sec);
+  ctx.strokeStyle = "#FF7F50";
+  ctx.lineWidth = 4;
   ctx.beginPath();
   ctx.moveTo(-28, 0);
   ctx.lineTo(112, 0);
