@@ -1,3 +1,13 @@
+const faceColor = document.getElementById("face-color");
+const borderColor = document.getElementById("border-color");
+const largeHandsColor = document.getElementById("largeHands-color");
+const lineColor = document.getElementById("line-color");
+const secondHandColor = document.getElementById("secondHand-color");
+const updateColor = () => {
+  console.log("click");
+};
+faceColor.addEventListener("click", updateColor);
+
 // set up the clock in canvas- all this stuff runs after every repaint
 function clock() {
   const now = new Date();
@@ -56,7 +66,7 @@ function clock() {
   const hr = now.getHours() % 12;
   const min = now.getMinutes();
   const sec = now.getSeconds();
-  console.log(`${hr}:${min}:${sec}`);
+  // console.log(`${hr}:${min}:${sec}`);
   ////  draw the hour hand
   ctx.save();
   ctx.rotate(
