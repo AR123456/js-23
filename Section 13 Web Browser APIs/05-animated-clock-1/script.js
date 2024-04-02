@@ -1,26 +1,19 @@
-const faceColor = document.getElementById("face-color");
-const borderColor = document.getElementById("border-color");
-const largeHandsColor = document.getElementById("largeHands-color");
-const lineColor = document.getElementById("line-color");
-const secondHandColor = document.getElementById("secondHand-color");
-const updateColor = () => {
-  console.log("click");
-};
-faceColor.addEventListener("click", updateColor);
+const faceColor = document.getElementById("face-color").value;
+const borderColor = document.getElementById("border-color").value;
+const largeHandsColor = document.getElementById("largeHands-color").value;
+const lineColor = document.getElementById("line-color").value;
+const secondHandColor = document.getElementById("secondHand-color").value;
 
 // set up the clock in canvas- all this stuff runs after every repaint
 function clock() {
   const now = new Date();
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
-
   //canvas
-
   ctx.save(); // save the default state before the next repaint
   ctx.clearRect(0, 0, 500, 500); // wipe clean
   ctx.translate(250, 250); // move zero point to the middle of the screen
   ctx.rotate(-Math.PI / 2); //rotate clock face -90 deg
-
   //// default styles
   ctx.strokeStyle = "#000000";
   ctx.fillStyle = "#f4f4f4";
