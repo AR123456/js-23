@@ -85,9 +85,14 @@ function clock() {
   ctx.strokeStyle = "#FF7F50";
   ctx.lineWidth = 4;
   ctx.beginPath();
-  ctx.moveTo(-28, 0);
-  ctx.lineTo(112, 0);
+  ctx.moveTo(-30, 0);
+  ctx.lineTo(100, 0);
   ctx.stroke();
+  // arc in center
+  ctx.beginPath();
+  ctx.arc(0, 0, 10, 0, Math.PI * 2, true);
+  ctx.fillStyle = "#FF7F50";
+  ctx.fill();
   ctx.restore();
   //
   ctx.restore(); // restore default state run last
