@@ -96,5 +96,7 @@ function clock() {
   ctx.restore();
   //
   ctx.restore(); // restore default state run last
+  // call requestAnimation here and outside of the clock function
+  requestAnimationFrame(clock);
 }
-clock();
+requestAnimationFrame(clock);
