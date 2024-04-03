@@ -19,18 +19,19 @@ function clock() {
   ctx.fillStyle = "#f4f4f4";
   ctx.lineWidth = 5;
   ctx.lineCap = "round";
-  // Draw clock face/border
+  //////////////// Draw clock face/border
   ctx.save(); // save the state, everything before it
   ctx.beginPath();
   ctx.lineWidth = 14;
   ctx.strokeStyle = borderColor.value;
+  ctx.fillStyle = faceColor.value;
   ctx.arc(0, 0, 142, 0, Math.PI * 2, true); // circular  clock face
   ctx.stroke();
   ctx.fill();
   ctx.restore(); // restore on clock face
-  //adding the tickmarks
+  /////////////////// hour tick marks
   ctx.save();
-  // hour tick marks
+  ctx.strokeStyle = lineColor.value;
   for (let i = 0; i < 12; i++) {
     ctx.beginPath();
     // rotate a bit with each loop
@@ -40,8 +41,9 @@ function clock() {
     ctx.stroke();
   }
   ctx.restore();
-  // minute tick marks
+  /////////////////////// minute tick marks
   ctx.save();
+  ctx.strokeStyle = lineColor.value;
   ctx.lineWidth = 4;
   for (let i = 0; i < 60; i++) {
     // only draw the minutes if it is not an hour
@@ -72,7 +74,7 @@ function clock() {
   ctx.lineTo(80, 0);
   ctx.stroke();
   ctx.restore();
-  ////  draw the minute hand
+  ////////  draw the minute hand
   ctx.save();
   ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec);
   ctx.strokeStyle = largeHandsColor.value;
@@ -82,7 +84,7 @@ function clock() {
   ctx.lineTo(112, 0);
   ctx.stroke();
   ctx.restore();
-  //// draw second hand
+  //////////// draw second hand
   ctx.save();
   ctx.rotate((Math.PI / 30) * sec);
   ctx.strokeStyle = secondHandColor.value;
