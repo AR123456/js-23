@@ -27,18 +27,8 @@ const ballTiming = {
 };
 const roll = ball.animate(ballRoll, ballTiming);
 roll.pause();
-play.addEventListener("click", () => {
-  roll.play();
-});
-pause.addEventListener("click", () => {
-  roll.pause();
-});
-reverse.addEventListener("click", () => {
-  roll.reverse();
-});
-speed.addEventListener("click", () => {
-  roll.updatePlaybackRate(rate++);
-});
-slow.addEventListener("click", () => {
-  roll.updatePlaybackRate(rate--);
-});
+play.addEventListener("click", () => roll.play());
+pause.addEventListener("click", () => roll.pause());
+reverse.addEventListener("click", () => roll.reverse());
+speed.addEventListener("click", () => roll.updatePlaybackRate(rate++));
+slow.addEventListener("click", () => roll.updatePlaybackRate(rate--));
