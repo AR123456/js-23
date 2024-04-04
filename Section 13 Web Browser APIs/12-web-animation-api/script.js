@@ -1,3 +1,10 @@
+const ball = document.getElementById("ball");
+const play = document.getElementById("play");
+const pause = document.getElementById("pause");
+const reverse = document.getElementById("reverse");
+const speed = document.getElementById("speed-up");
+const slow = document.getElementById("slow-down");
+
 // animations object
 const ballRoll = [
   { transform: "rotate(0) translate3D(-50%, -50%, 0" },
@@ -11,4 +18,18 @@ const ballTiming = {
   iterations: Infinity,
 };
 
-document.getElementById("ball").animate(ballRoll, ballTiming);
+play.addEventListener("click", () => {
+  ball.animate(ballRoll, ballTiming);
+});
+pause.addEventListener("click", () => {
+  ball.animate(ballRoll, ballTiming).pause();
+});
+reverse.addEventListener("click", () => {
+  ball.animate(ballRoll, ballTiming).reverse();
+});
+speed.addEventListener("click", () => {
+  ball.animate(ballRoll, ballTiming).pause();
+});
+slow.addEventListener("click", () => {
+  ball.animate(ballRoll, ballTiming).pause();
+});
