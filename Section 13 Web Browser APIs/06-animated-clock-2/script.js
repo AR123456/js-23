@@ -3,11 +3,11 @@ const borderColor = document.getElementById("border-color");
 const largeHandsColor = document.getElementById("large-hands-color");
 const lineColor = document.getElementById("line-color");
 const secondHandColor = document.getElementById("second-hand-color");
-
+const canvas = document.getElementById("canvas");
 // set up the clock in canvas- all this stuff runs after every repaint
 function clock() {
   const now = new Date();
-  const canvas = document.getElementById("canvas");
+
   const ctx = canvas.getContext("2d");
   //canvas
   ctx.save(); // save the default state before the next repaint
@@ -105,3 +105,13 @@ function clock() {
   requestAnimationFrame(clock);
 }
 requestAnimationFrame(clock);
+/// note this will re load the page so may want to add colors to local storage before
+document.getElementById("save-btn").addEventListener("click", () => {
+  const dataURL = canvas.toDataURL("image/png");
+  // create link
+  const link = document.createElement("a");
+  link.download = "clock.png";
+  link.href = dataURL;
+  // call click on the link
+  link.click();
+});
