@@ -27,9 +27,9 @@ rec.onresult = function (e) {
   for (let i = e.resultIndex; i < e.results.length; i++) {
     const script = e.results[i][0].transcript.toLowerCase().trim();
     if (acceptedColors.includes(script)) {
-      console.log(script);
+      document.body.style.backgroundColor = script;
     } else {
-      console.log(acceptedColors);
+      //
     }
   }
 };
