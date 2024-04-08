@@ -29,7 +29,8 @@ rec.onresult = function (e) {
     if (acceptedColors.includes(script)) {
       document.body.style.backgroundColor = script;
     } else {
-      //
+      const message = `<h2>${script} not one of my programed colors, please say a color</h2>`;
+      document.querySelector("h1").innerHTML = message;
     }
   }
 };
