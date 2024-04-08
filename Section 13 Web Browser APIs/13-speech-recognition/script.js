@@ -10,10 +10,27 @@ rec.continuous = true;
 
 // handler for what to do with result
 rec.onresult = function (e) {
-  //   console.log(e.results[0][0].transcript);
+  //array of acceptable colors for comparison
+  const acceptedColors = [
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "pink",
+    "brown",
+    "purple",
+    "orange",
+    "black",
+    "white",
+  ];
+
   for (let i = e.resultIndex; i < e.results.length; i++) {
     const script = e.results[i][0].transcript.toLowerCase().trim();
-    console.log(script);
+    if (acceptedColors.includes(script)) {
+      console.log(script);
+    } else {
+      console.log(acceptedColors);
+    }
   }
 };
 // browser will ask for permission
