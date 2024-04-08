@@ -12,7 +12,7 @@ rec.continuous = true;
 rec.onresult = function (e) {
   //   console.log(e.results[0][0].transcript);
   for (let i = e.resultIndex; i < e.results.length; i++) {
-    const script = e.results[i][0].transcript;
+    const script = e.results[i][0].transcript.toLowerCase().trim();
     console.log(script);
   }
 };
