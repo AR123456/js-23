@@ -1,31 +1,41 @@
 // JS function that gets named colors
 
 function getNamedColors() {
-  // Get all named colors from a dummy element's style object
+  // Create a dummy element
   const dummyElement = document.createElement("div");
-  const namedColors = [];
-
-  // Set display to none to prevent it from affecting the layout
+  // Hide the element
   dummyElement.style.display = "none";
+  // Append the element to the document
   document.body.appendChild(dummyElement);
-
+  // Get the computed style of the dummy element
   const computedStyle = window.getComputedStyle(dummyElement);
 
-  for (const colorName in computedStyle) {
-    if (typeof computedStyle[colorName] === "string") {
-      const colorValue = computedStyle[colorName];
-      if (colorValue.match(/^(rgb|hsl|#[0-9a-fA-F]{3,6})/)) {
-        namedColors.push({ name: colorName, value: colorValue });
-      }
-    }
-  }
+  // List of known CSS color properties
+  const colorProperties = [
+    "color",
+    "background-color",
+    "border-color",
+    "outline-color",
+    "text-decoration-color",
+    "text-emphasis-color",
+    "column-rule-color",
+    "fill",
+    "stroke",
+    "stop-color",
+    "lighting-color",
+  ];
+
+  // Filter out color properties from computed style
+  const colorNames = colorProperties.filter((propertyName) =>
+    computedStyle.getPropertyValue(propertyName).match(/^rgb|hsl|#/)
+  );
 
   // Remove the dummy element
   document.body.removeChild(dummyElement);
 
-  return namedColors;
+  return colorNames;
 }
 
 // Example usage:
 const namedColors = getNamedColors();
-console.log(namedColors[2]);
+console.log(namedColors);
