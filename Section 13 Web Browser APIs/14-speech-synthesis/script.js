@@ -5,9 +5,9 @@ selectVoice = document.querySelector("#voice-select");
 speakButton = document.querySelector(".btn");
 
 let voices = [];
-
-inputForm.addEventListener("submit", (e) => {
+const onSubmit = (e) => {
   e.preventDefault();
   const sayThis = new SpeechSynthesisUtterance(textInput.value);
   synth.speak(sayThis);
-});
+};
+inputForm.addEventListener("submit", onSubmit);
