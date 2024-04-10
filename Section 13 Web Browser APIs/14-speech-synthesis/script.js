@@ -7,13 +7,15 @@ function addVoicesToSelect() {
   voices = synth.getVoices();
 
   for (let i = 0; i < voices.length; i++) {
+    // build options html
     const option = document.createElement("option");
+    // get the voice name and lang
     option.textContent = `${voices[i].name} - ${voices[i].lang}`;
-
+    // default edge case
     if (voices[i].default) {
       option.textContent += " - DEFAULT";
     }
-
+    // sett data attribute
     option.setAttribute("data-lang", voices[i].lang);
     option.setAttribute("data-name", voices[i].name);
     voiceSelect.appendChild(option);
