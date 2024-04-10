@@ -15,7 +15,7 @@ function addVoicesToSelect() {
     if (voices[i].default) {
       option.textContent += " - DEFAULT";
     }
-    // sett data attribute
+    // set  data attribute
     option.setAttribute("data-lang", voices[i].lang);
     option.setAttribute("data-name", voices[i].name);
     voiceSelect.appendChild(option);
@@ -24,11 +24,11 @@ function addVoicesToSelect() {
 
 function onSubmit(e) {
   e.preventDefault();
-
+  // getting the text input by user
   const textInput = document.getElementById("text-input");
-
+  // telling synthesiser to say it
   const utterThis = new SpeechSynthesisUtterance(textInput.value);
-
+  // select the voice from  the dynamically created list
   const selectedOption =
     voiceSelect.selectedOptions[0].getAttribute("data-name");
   for (let i = 0; i < voices.length; i++) {
