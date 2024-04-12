@@ -6,6 +6,10 @@ function Rectangle(name, width, height) {
   this.name = name;
   this.width = width;
   this.height = height;
+  // adding a method
+  this.area = function () {
+    return this.height * this.width;
+  };
 }
 
 // instantiate
@@ -16,3 +20,4 @@ const rect1 = new Rectangle("rect2", 5, 7);
 // 3.	The this keyword is set to the new empty object.
 // 4.	The new object is returned from the constructor function.
 console.log(rect1);
+console.log(rect1.area());
