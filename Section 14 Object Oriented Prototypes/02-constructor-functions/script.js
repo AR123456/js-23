@@ -21,3 +21,6 @@ const rect1 = new Rectangle("rect2", 5, 7);
 // 4.	The new object is returned from the constructor function.
 console.log(rect1);
 console.log(rect1.area());
+const rect2 = new Rectangle("rect2.2", 9, 11);
+const rect3 = new Rectangle("rect3", 5, 15);
+console.log(rect2.name, rect3.name);
