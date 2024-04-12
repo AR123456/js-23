@@ -10,3 +10,10 @@ console.log(strLit.toUpperCase());
 console.log(strLit[0]);
 //un boxing - object turned back into a literal
 console.log(strObj.valueOf(), typeof strObj.valueOf());
+//constructor on a primative data type
+console.log(strLit.constructor);
+//check to see if object is an instance of a constructor function
+// literal is false
+console.log(strLit instanceof String);
+// object is not
+console.log(strObj instanceof String);
