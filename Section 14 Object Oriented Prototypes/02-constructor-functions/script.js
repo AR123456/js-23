@@ -24,3 +24,7 @@ console.log(rect1.area());
 const rect2 = new Rectangle("rect2.2", 9, 11);
 const rect3 = new Rectangle("rect3", 5, 15);
 console.log(rect2.name, rect3.name);
+// logging the constructor
+console.log(rect1.constructor);
+// instance of an operator - this is true
+console.log(rect2 instanceof Rectangle);
