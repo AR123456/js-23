@@ -2,7 +2,8 @@
 // new initializes a new constructor function
 // const now = new Date();
 function Rectangle() {
-  //
+  //can set properties in here but more likely to set by passing in
+  this.name = "rectangle 1";
 }
 
 // instanciate
