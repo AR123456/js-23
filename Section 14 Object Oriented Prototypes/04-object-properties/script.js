@@ -21,5 +21,13 @@ console.log(rect1.color);
 rect1.perimeter = function () {
   return 2 * (rect1.height + rect1.width);
 };
-console.log(rect1.perimeter());
+// or as arrow
+rect2.perimeter = () => 2 * (rect2.height + rect2.width);
+
+console.log(rect2.perimeter());
 console.log(rect1.area());
+// Deleting a property
+delete rect2.perimeter;
+// checking for property
+console.log(rect2.hasOwnProperty("color"));
+console.log(rect1.hasOwnProperty("color"));
