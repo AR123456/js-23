@@ -37,3 +37,8 @@ console.log(Object.keys(rect1));
 console.log(Object.values(rect1));
 // get entries - key value pair of each thing in the object
 console.log(Object.entries(rect1));
+// Looping with for of
+for (let [key, value] of Object.entries(rect2)) {
+  //
+  console.log(key, value);
+}
