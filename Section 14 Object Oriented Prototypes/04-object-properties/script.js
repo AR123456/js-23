@@ -17,3 +17,9 @@ console.log(rect1["name"], rect2["height"]);
 // can add a new property
 rect1.color = "red";
 console.log(rect1.color);
+// adding this outside the constructor so no need to use the this keyword
+rect1.perimeter = function () {
+  return 2 * (rect1.height + rect1.width);
+};
+console.log(rect1.perimeter());
+console.log(rect1.area());
