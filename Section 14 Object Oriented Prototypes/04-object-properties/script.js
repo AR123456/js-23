@@ -33,3 +33,7 @@ console.log(rect2.hasOwnProperty("color"));
 console.log(rect1.hasOwnProperty("color"));
 // Get Keys of object
 console.log(Object.keys(rect1));
+// get values of object
+console.log(Object.values(rect1));
+// get entries - key value pair of each thing in the object
+console.log(Object.entries(rect1));
