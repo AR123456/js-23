@@ -31,3 +31,5 @@ delete rect2.perimeter;
 // checking for property
 console.log(rect2.hasOwnProperty("color"));
 console.log(rect1.hasOwnProperty("color"));
+// Get Keys of object
+console.log(Object.keys(rect1));
