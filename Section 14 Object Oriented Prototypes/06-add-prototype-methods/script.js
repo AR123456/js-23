@@ -13,4 +13,9 @@ Rectangle.prototype.area = function () {
   return this.width * this.height;
 };
 // now its on the prototype of the Rectangle object
-console.log(rect);
+
+// can add more methods to the prototype
+Rectangle.prototype.perimeter = function () {
+  return (this.width + this.height) * 2;
+};
+console.log(rect.perimeter());
