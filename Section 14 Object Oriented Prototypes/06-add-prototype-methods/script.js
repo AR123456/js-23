@@ -18,4 +18,9 @@ Rectangle.prototype.area = function () {
 Rectangle.prototype.perimeter = function () {
   return (this.width + this.height) * 2;
 };
-console.log(rect.perimeter());
+
+Rectangle.prototype.isSquare = function () {
+  return this.width === this.height;
+};
+// they can take in arguments
+console.log(rect.isSquare());
