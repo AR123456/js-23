@@ -23,4 +23,7 @@ Rectangle.prototype.isSquare = function () {
   return this.width === this.height;
 };
 // they can take in arguments
-console.log(rect.isSquare());
+Rectangle.prototype.changeName = function (newName) {
+  return (this.name = newName);
+};
+console.log(rect.changeName("Mr square"));
