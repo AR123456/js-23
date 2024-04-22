@@ -22,4 +22,7 @@ function createRectangle(height, width) {
   });
 }
 const rect = createRectangle(10, 20);
+//log the object
 console.log(rect);
+// call one of the methods
+console.log(rect.area());
