@@ -3,7 +3,8 @@ function Player(name, lvl, points) {
   this.lvl = lvl;
   this.points = points;
   this.gainXp = function (gain) {
-    return points + gain;
+    console.log(this.points, gain);
+    return this.points + gain;
   };
   this.describe = function () {
     console.log(name);
