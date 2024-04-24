@@ -19,7 +19,8 @@ class Rectangle {
 }
 
 const square = new Rectangle("Square", 20, 20);
-console.log(square);
-console.log(square.area());
-console.log(square.perimeter());
-console.log(square.isSquare());
+// console.log(square);
+// console.log(square.area());
+// console.log(square.perimeter());
+// console.log(square.isSquare());
+square.logArea();
