@@ -22,6 +22,10 @@ class Circle extends Shape {
     super(name);
     this.radius = radius;
   }
+  // overwriting the logName method coming from shape
+  logName() {
+    console.log(`Circle Name: ${this.name}`);
+  }
 }
 const rect = new Rectangle("Rect 1", 20, 20);
 rect.logName();
