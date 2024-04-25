@@ -17,5 +17,13 @@ class Rectangle extends Shape {
     this.height = height;
   }
 }
+class Circle extends Shape {
+  constructor(name, radius) {
+    super(name);
+    this.radius = radius;
+  }
+}
 const rect = new Rectangle("Rect 1", 20, 20);
 rect.logName();
+const cir = new Circle("Cir 1", 30);
+cir.logName();
