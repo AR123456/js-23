@@ -3,7 +3,7 @@ function Person(firstName, lastName) {
   this._lastName = lastName;
   Object.defineProperty(this, "firstName", {
     get: function () {
-      return this._firstName;
+      return this.capitalizeFirst(this._firstName);
     },
     set: function () {
       this._firstName = value;
@@ -11,7 +11,7 @@ function Person(firstName, lastName) {
   });
   Object.defineProperty(this, "lastName", {
     get: function () {
-      return this._lastName;
+      return this.capitalizeFirst(this._lastName);
     },
     set: function () {
       this._lastName = value;
