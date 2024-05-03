@@ -9,4 +9,16 @@ function Person(firstName, lastName) {
       this._firstName = value;
     },
   });
+  Object.defineProperty(this, "lastName", {
+    get: function () {
+      return this._lastName;
+    },
+    set: function () {
+      this._lastName = value;
+    },
+  });
 }
+// instantiate new person object
+const person1 = new Person("john", "doe");
+console.log(person1.firstName);
+console.log(person1.lastName);
