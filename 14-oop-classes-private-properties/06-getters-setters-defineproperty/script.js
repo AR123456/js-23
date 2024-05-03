@@ -5,7 +5,7 @@ function Person(firstName, lastName) {
     get: function () {
       return this.capitalizeFirst(this._firstName);
     },
-    set: function () {
+    set: function (value) {
       this._firstName = value;
     },
   });
@@ -13,7 +13,7 @@ function Person(firstName, lastName) {
     get: function () {
       return this.capitalizeFirst(this._lastName);
     },
-    set: function () {
+    set: function (value) {
       this._lastName = value;
     },
   });
