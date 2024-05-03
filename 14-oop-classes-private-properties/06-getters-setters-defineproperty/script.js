@@ -18,6 +18,10 @@ function Person(firstName, lastName) {
     },
   });
 }
+// re usable function to cap the first letter
+Person.prototype.capitalizeFirst = function (value) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+};
 // instantiate new person object
 const person1 = new Person("john", "doe");
 console.log(person1.firstName);
