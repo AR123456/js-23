@@ -11,7 +11,7 @@ class Wallet {
 
   withdraw(amount) {
     if (amount > this._balance) {
-      console.log("Not enough funds");
+      console.log('Not enough funds');
       return;
     }
 
@@ -23,7 +23,7 @@ class Wallet {
     console.log(`Depositing ${amount}`);
 
     this._transactions.push({
-      type: "deposit",
+      type: 'deposit',
       amount,
     });
   }
@@ -32,7 +32,7 @@ class Wallet {
     console.log(`Withdrawing ${amount}`);
 
     this._transactions.push({
-      type: "withdraw",
+      type: 'withdraw',
       amount,
     });
   }
