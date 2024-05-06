@@ -3,28 +3,32 @@
 // [[Writable]] - if `true`, the value of the property can be changed, otherwise not
 // [[Value]] - the value of the property
 
+// PI is is set to  writeable false, enumerable false and configurable false
+// can see this using getOwnPropertyDescriptor
 Math.PI = 4;
 console.log(Math.PI);
 
-let descriptor = Object.getOwnPropertyDescriptor(Math, 'PI');
-// console.log(descriptor);
+let descriptor = Object.getOwnPropertyDescriptor(Math, "PI");
+console.log(descriptor);
+// let descriptors = Object.getOwnPropertyDescriptors(Math, "PI");
+// console.log(descriptors);
 
 const rectObj = {
-  name: 'Rectangle 1',
+  name: "Rectangle 1",
   width: 10,
   height: 10,
 };
 
-Object.defineProperty(rectObj, 'name', {
+Object.defineProperty(rectObj, "name", {
   writable: false,
   configurable: false,
   enumerable: false,
 });
 
-descriptor = Object.getOwnPropertyDescriptor(rectObj, 'name');
+descriptor = Object.getOwnPropertyDescriptor(rectObj, "name");
 console.log(descriptor);
 
-rectObj.name = 'New Name';
+rectObj.name = "New Name";
 delete rectObj.name;
 
 console.log(rectObj);
