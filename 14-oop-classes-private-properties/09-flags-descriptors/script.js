@@ -9,21 +9,22 @@ Math.PI = 4;
 console.log(Math.PI);
 
 let descriptor = Object.getOwnPropertyDescriptor(Math, "PI");
-console.log(descriptor);
+// console.log(descriptor);
 // let descriptors = Object.getOwnPropertyDescriptors(Math, "PI");
 // console.log(descriptors);
-
+// default on object created by me properties is true
 const rectObj = {
   name: "Rectangle 1",
   width: 10,
   height: 10,
 };
 
-// Object.defineProperty(rectObj, "name", {
-//   writable: false,
-//   configurable: false,
-//   enumerable: false,
-// });
+// can use the defineProperty method to change the default
+Object.defineProperty(rectObj, "name", {
+  writable: false,
+  configurable: false,
+  enumerable: false,
+});
 
 descriptor = Object.getOwnPropertyDescriptor(rectObj, "name");
 console.log(descriptor);
