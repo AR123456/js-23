@@ -14,7 +14,7 @@ let descriptors = Object.getOwnPropertyDescriptors(rectObj);
 console.log(descriptors);
 
 // //  Can not add and remove properties
-// rectObj.color = 'red';
+// rectObj.color = "red";
 // delete rectObj.name;
 
 // // Can change values
@@ -23,7 +23,7 @@ console.log(descriptors);
 // // console.log(rectObj);
 
 // const circleObj = {
-//   name: 'Circle 1',
+//   name: "Circle 1",
 //   radius: 30,
 // };
 
@@ -32,14 +32,14 @@ console.log(descriptors);
 // descriptors = Object.getOwnPropertyDescriptors(circleObj);
 
 // // Can not add, remove or modify
-// circleObj.color = 'blue';
+// circleObj.color = "blue";
 // delete circleObj.name;
-// circleObj.name = 'New Name';
+// circleObj.name = "New Name";
 
 // console.log(descriptors);
 
 // // If an object is frozen, it is also sealed
-// console.log('rectObj is sealed?', Object.isSealed(rectObj));
-// console.log('rectObj is frozen?', Object.isFrozen(rectObj));
-// console.log('circleObj is sealed?', Object.isSealed(circleObj));
-// console.log('circleObj is frozen?', Object.isSealed(circleObj));
+// console.log("rectObj is sealed?", Object.isSealed(rectObj));
+// console.log("rectObj is frozen?", Object.isFrozen(rectObj));
+// console.log("circleObj is sealed?", Object.isSealed(circleObj));
+// console.log("circleObj is frozen?", Object.isSealed(circleObj));
