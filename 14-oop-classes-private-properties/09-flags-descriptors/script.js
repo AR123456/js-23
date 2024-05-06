@@ -19,22 +19,22 @@ const rectObj = {
   height: 10,
 };
 
-Object.defineProperty(rectObj, "name", {
-  writable: false,
-  configurable: false,
-  enumerable: false,
-});
+// Object.defineProperty(rectObj, "name", {
+//   writable: false,
+//   configurable: false,
+//   enumerable: false,
+// });
 
 descriptor = Object.getOwnPropertyDescriptor(rectObj, "name");
 console.log(descriptor);
 
-rectObj.name = "New Name";
-delete rectObj.name;
+// rectObj.name = "New Name";
+// delete rectObj.name;
 
-console.log(rectObj);
+// console.log(rectObj);
 
-for (let [key, value] of Object.entries(rectObj)) {
-  console.log(`${key}: ${value}`);
-}
+// for (let [key, value] of Object.entries(rectObj)) {
+//   console.log(`${key}: ${value}`);
+// }
 
-console.log(Object.getOwnPropertyDescriptors(rectObj));
+// console.log(Object.getOwnPropertyDescriptors(rectObj));
