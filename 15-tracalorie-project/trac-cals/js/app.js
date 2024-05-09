@@ -39,21 +39,29 @@ class CalorieTracker {
 class Meal {
   // constructor id,name,cal
   constructor(name, calories) {
-    // the id comes from db IRL , hexidecimal 16 based number
+    // the id comes from db IRL , hexidecimal 16 based number - could also use a date and time stamp as random id
     this.id = Math.random().toString(16).slice(2);
-
     this.name = name;
     this.calories = calories;
   }
 }
 class Workout {
   // constructor id,name,cal
-  constructor(id, name, calories) {
-    this.id = id;
+  constructor(name, calories) {
+    this.id = Math.random().toString(16).slice(2);
     this.name = name;
     this.calories = calories;
   }
 }
+//////// instantiate the tracker
+const tracker = new CalorieTracker();
+const breakfast = new Meal("Breakfast", 400);
+const run = new Workout("Morning Run", 300);
+tracker.addMeal(breakfast);
+tracker.addWorkout(run);
+console.log(tracker._meals);
+console.log(tracker._workouts);
+
 class Storage {}
 // static methods - getCalorieLimit,setCalorieLimit,getTotalCalories, setTotalCalories,updateCalories,saveMeal,removeMeal,saveWorkout,removeWorkout,getMeals,getWorkouts,clearAll
 class App {
