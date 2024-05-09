@@ -3,6 +3,7 @@ class CalorieTracker {
   // private displayCaloriesTotal,displayCalorieLimit, displayCaloriesConsumed,displayCaloriesBurned,displayCaloriesRemaining,displayNewMeal,displayNewWorkout,renderStats - this will be called alot to update dom after actions
   // define const getElementById  displaying in dom in private Methods
   constructor() {}
+  //////Public Methods
   addMeal() {}
   removeMeal() {}
   addWorkout() {}
@@ -10,6 +11,15 @@ class CalorieTracker {
   resetDay() {}
   loadItems() {}
   setLimit() {}
+  ////Private Methods
+  _displayCaloriesTotal() {}
+  _displayCalorieLimit() {}
+  _displayCaloriesConsumed() {}
+  _displayCaloriesBurned() {}
+  _displayCaloriesRemaining() {}
+  _displayNewMeal() {}
+  _displayNewWorkout() {}
+  _renderStats() {}
 }
 class Meal {
   // constructor id,name,cal
