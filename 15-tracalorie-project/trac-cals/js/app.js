@@ -7,12 +7,20 @@ class CalorieTracker {
     this._caloriesLimit = 2000;
     this._totalCalories = 0;
     this._meals = [];
-    this.workouts = [];
+    this._workouts = [];
   }
   //////Public Methods
-  addMeal() {}
+  addMeal(meal) {
+    // add meal to array
+    this._meals.push(meal);
+    // increment total cals
+    this._totalCalories += meal.calories;
+  }
   removeMeal() {}
-  addWorkout() {}
+  addWorkout(workout) {
+    this._workouts.push(workout);
+    this._totalCalories -= workout.calories;
+  }
   removeWorkout() {}
   resetDay() {}
   loadItems() {}
