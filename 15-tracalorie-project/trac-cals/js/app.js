@@ -38,9 +38,10 @@ class CalorieTracker {
 
 class Meal {
   // constructor id,name,cal
-  constructor(id, name, calories) {
-    //  this.id = Math.random().toString(16).slice(2);
-    this.id = id;
+  constructor(name, calories) {
+    // the id comes from db IRL , hexidecimal 16 based number
+    this.id = Math.random().toString(16).slice(2);
+
     this.name = name;
     this.calories = calories;
   }
