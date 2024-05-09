@@ -26,12 +26,18 @@ class CalorieTracker {
   loadItems() {}
   setLimit() {}
   ////Private Methods
-  _displayCaloriesTotal() {}
+  _displayCaloriesTotal() {
+    console.log(tracker._totalCalories);
+  }
   _displayCalorieLimit() {}
   _displayCaloriesConsumed() {}
-  _displayCaloriesBurned() {}
+  _displayCaloriesBurned() {
+    console.log(tracker._workouts);
+  }
   _displayCaloriesRemaining() {}
-  _displayNewMeal() {}
+  _displayNewMeal() {
+    console.log(tracker._meals);
+  }
   _displayNewWorkout() {}
   _renderStats() {}
 }
@@ -59,8 +65,9 @@ const breakfast = new Meal("Breakfast", 400);
 const run = new Workout("Morning Run", 300);
 tracker.addMeal(breakfast);
 tracker.addWorkout(run);
-console.log(tracker._meals);
-console.log(tracker._workouts);
+tracker._displayCaloriesTotal();
+tracker._displayNewMeal();
+tracker._displayCaloriesBurned();
 
 class Storage {}
 // static methods - getCalorieLimit,setCalorieLimit,getTotalCalories, setTotalCalories,updateCalories,saveMeal,removeMeal,saveWorkout,removeWorkout,getMeals,getWorkouts,clearAll
