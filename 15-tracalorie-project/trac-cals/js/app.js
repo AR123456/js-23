@@ -11,6 +11,7 @@ class CalorieTracker {
     // run the methods to update the dom
     this._displayCalorieLimit();
     this._displayCaloriesTotal();
+    this._displayCaloriesConsumed();
   }
   //////Public Methods
   addMeal(meal) {
@@ -41,6 +42,7 @@ class CalorieTracker {
   }
   _displayCaloriesConsumed() {
     const caloriesConsumedEl = document.getElementById("calories-consumed");
+    // TODO
   }
   _displayCaloriesBurned() {
     const caloriesBurnedEl = document.getElementById("calories-burned");
@@ -53,6 +55,7 @@ class CalorieTracker {
   _displayNewWorkout() {}
   _renderStats() {
     this._displayCaloriesTotal();
+    this._displayCaloriesConsumed();
   }
 }
 
