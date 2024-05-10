@@ -4,11 +4,11 @@ class CalorieTracker {
   // define const getElementById  displaying in dom in private Methods
   constructor() {
     // only using these properties in this class so making private using underscore
-    this._caloriesLimit = 2200;
+    this._caloriesLimit = 2000;
     this._totalCalories = 0;
     this._meals = [];
     this._workouts = [];
-    // run the methods to update the dom
+    // run the methods to update the dom when page loads
     this._displayCalorieLimit();
     this._displayCaloriesTotal();
     this._displayCaloriesConsumed();
@@ -42,7 +42,12 @@ class CalorieTracker {
   }
   _displayCaloriesConsumed() {
     const caloriesConsumedEl = document.getElementById("calories-consumed");
-    // TODO
+    // use reduce to add all of the values in the _meals array
+    const consumed = this._meals.reduce(
+      (total, meal) => total + meal.calories,
+      0
+    );
+    caloriesConsumedEl.innerHTML = consumed;
   }
   _displayCaloriesBurned() {
     const caloriesBurnedEl = document.getElementById("calories-burned");
@@ -54,6 +59,7 @@ class CalorieTracker {
   }
   _displayNewWorkout() {}
   _renderStats() {
+    // updates when a meal or workout is added
     this._displayCaloriesTotal();
     this._displayCaloriesConsumed();
   }
