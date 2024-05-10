@@ -39,11 +39,12 @@ class CalorieTracker {
     const caloriesLimitEl = document.getElementById("calories-limit");
     caloriesLimitEl.innerHTML = this._caloriesLimit;
   }
-  _displayCaloriesConsumed() {}
+  _displayCaloriesConsumed() {
+    const caloriesConsumedEl = document.getElementById("calories-consumed");
+  }
   _displayCaloriesBurned() {
-    console.log(tracker._workouts);
-    document.getElementById("calories-burned").innerHTML =
-      tracker._workouts[0].calories;
+    const caloriesBurnedEl = document.getElementById("calories-burned");
+    caloriesBurnedEl.innerHTML = tracker._workouts[0].calories;
   }
   _displayCaloriesRemaining() {}
   _displayNewMeal() {
