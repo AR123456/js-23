@@ -8,6 +8,8 @@ class CalorieTracker {
     this._totalCalories = 0;
     this._meals = [];
     this._workouts = [];
+    // run the methods to update the dom
+    this._displayCaloriesTotal();
   }
   //////Public Methods
   addMeal(meal) {
@@ -15,11 +17,13 @@ class CalorieTracker {
     this._meals.push(meal);
     // increment total cals
     this._totalCalories += meal.calories;
+    this._renderStats();
   }
   removeMeal() {}
   addWorkout(workout) {
     this._workouts.push(workout);
     this._totalCalories -= workout.calories;
+    this._renderStats();
   }
   removeWorkout() {}
   resetDay() {}
@@ -27,7 +31,8 @@ class CalorieTracker {
   setLimit() {}
   ////Private Methods
   _displayCaloriesTotal() {
-    console.log(tracker._totalCalories);
+    const totalCaloriesEl = document.getElementById("calories-total");
+    totalCaloriesEl.innerHTML = this._totalCalories;
   }
   _displayCalorieLimit() {}
   _displayCaloriesConsumed() {}
@@ -41,7 +46,9 @@ class CalorieTracker {
     console.log(tracker._meals);
   }
   _displayNewWorkout() {}
-  _renderStats() {}
+  _renderStats() {
+    this._displayCaloriesTotal();
+  }
 }
 
 class Meal {
@@ -67,7 +74,7 @@ const breakfast = new Meal("Breakfast", 400);
 const run = new Workout("Morning Run", 300);
 tracker.addMeal(breakfast);
 tracker.addWorkout(run);
-tracker._displayCaloriesTotal();
+
 tracker._displayNewMeal();
 tracker._displayCaloriesBurned();
 
