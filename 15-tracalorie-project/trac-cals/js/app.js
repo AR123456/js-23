@@ -33,6 +33,8 @@ class CalorieTracker {
   _displayCaloriesConsumed() {}
   _displayCaloriesBurned() {
     console.log(tracker._workouts);
+    document.getElementById("calories-burned").innerHTML =
+      tracker._workouts[0].calories;
   }
   _displayCaloriesRemaining() {}
   _displayNewMeal() {
