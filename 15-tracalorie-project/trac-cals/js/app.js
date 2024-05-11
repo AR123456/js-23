@@ -66,7 +66,7 @@ class CalorieTracker {
   }
   _displayCaloriesProgress() {
     const progressDisplayEl = document.getElementById("calorie-progress");
-    const elWidth = (this._caloriesLimit - this._totalCalories) * 0.01;
+    const elWidth = (this._totalCalories / this._caloriesLimit) * 100;
     progressDisplayEl.style.width = `${elWidth}em`;
     if (this._caloriesLimit - this._totalCalories < 200) {
       // red
@@ -109,7 +109,7 @@ class Workout {
 }
 //////// instantiate the tracker
 const tracker = new CalorieTracker();
-const breakfast = new Meal("Breakfast", 100);
+const breakfast = new Meal("Breakfast", 1000);
 const lunch = new Meal("Lunch", 100);
 const run = new Workout("Morning Run", 50);
 tracker.addMeal(breakfast);
