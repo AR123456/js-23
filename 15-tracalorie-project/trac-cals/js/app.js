@@ -66,6 +66,9 @@ class CalorieTracker {
   }
   _displayCaloriesProgress() {
     const progressDisplayEl = document.getElementById("calorie-progress");
+    const elWidth = (this._caloriesLimit - this._totalCalories) * 0.01;
+    progressDisplayEl.style.width = `${elWidth}em`;
+    console.log(elWidth);
   }
   _displayNewMeal() {
     console.log(tracker._meals);
@@ -77,6 +80,7 @@ class CalorieTracker {
     this._displayCaloriesConsumed();
     this._displayCaloriesConsumed();
     this._displayCaloriesRemaining();
+    this._displayCaloriesProgress();
   }
 }
 
