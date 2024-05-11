@@ -68,6 +68,12 @@ class CalorieTracker {
     const progressDisplayEl = document.getElementById("calorie-progress");
     const elWidth = (this._caloriesLimit - this._totalCalories) * 0.01;
     progressDisplayEl.style.width = `${elWidth}em`;
+    if (this._caloriesLimit - this._totalCalories < 200) {
+      // red
+      document.getElementById(
+        "calories-remaining"
+      ).parentElement.style.backgroundColor = "red";
+    }
     console.log(elWidth);
   }
   _displayNewMeal() {
