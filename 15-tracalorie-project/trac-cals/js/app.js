@@ -12,6 +12,7 @@ class CalorieTracker {
     this._displayCalorieLimit();
     this._displayCaloriesTotal();
     this._displayCaloriesConsumed();
+    this._displayCaloriesBurned();
   }
   //////Public Methods
   addMeal(meal) {
@@ -51,7 +52,11 @@ class CalorieTracker {
   }
   _displayCaloriesBurned() {
     const caloriesBurnedEl = document.getElementById("calories-burned");
-    caloriesBurnedEl.innerHTML = tracker._workouts[0].calories;
+    const burned = this._workouts.reduce(
+      (total, workout) => total + workout.calories,
+      0
+    );
+    caloriesBurnedEl.innerHTML = burned;
   }
   _displayCaloriesRemaining() {}
   _displayNewMeal() {
@@ -61,6 +66,7 @@ class CalorieTracker {
   _renderStats() {
     // updates when a meal or workout is added
     this._displayCaloriesTotal();
+    this._displayCaloriesConsumed();
     this._displayCaloriesConsumed();
   }
 }
