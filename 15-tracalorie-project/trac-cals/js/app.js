@@ -4,7 +4,7 @@ class CalorieTracker {
   // define const getElementById  displaying in dom in private Methods
   constructor() {
     // only using these properties in this class so making private using underscore
-    this._caloriesLimit = 2000;
+    this._caloriesLimit = 2200;
     this._totalCalories = 0;
     this._meals = [];
     this._workouts = [];
@@ -13,6 +13,7 @@ class CalorieTracker {
     this._displayCaloriesTotal();
     this._displayCaloriesConsumed();
     this._displayCaloriesBurned();
+    this._displayCaloriesRemaining();
   }
   //////Public Methods
   addMeal(meal) {
@@ -58,7 +59,11 @@ class CalorieTracker {
     );
     caloriesBurnedEl.innerHTML = burned;
   }
-  _displayCaloriesRemaining() {}
+  _displayCaloriesRemaining() {
+    const caloriesRemainingEl = document.getElementById("calories-remaining");
+    const remaining = this._caloriesLimit - this._totalCalories;
+    caloriesRemainingEl.innerHTML = remaining;
+  }
   _displayNewMeal() {
     console.log(tracker._meals);
   }
@@ -68,6 +73,7 @@ class CalorieTracker {
     this._displayCaloriesTotal();
     this._displayCaloriesConsumed();
     this._displayCaloriesConsumed();
+    this._displayCaloriesRemaining();
   }
 }
 
