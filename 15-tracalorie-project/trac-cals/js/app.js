@@ -64,11 +64,10 @@ class CalorieTracker {
     const caloriesRemainingEl = document.getElementById("calories-remaining");
     const remaining = this._caloriesLimit - this._totalCalories;
     caloriesRemainingEl.innerHTML = remaining;
-    if (remaining < 200) {
+    console.log(remaining);
+    if (remaining <= 0) {
       // red
-      document.getElementById(
-        "calories-remaining"
-      ).parentElement.style.backgroundColor = "red";
+      caloriesRemainingEl.parentElement.style.backgroundColor = "red";
     }
   }
   _displayCaloriesProgress() {
@@ -112,9 +111,9 @@ class Workout {
 }
 //////// instantiate the tracker
 const tracker = new CalorieTracker();
-const breakfast = new Meal("Breakfast", 1400);
-const lunch = new Meal("Lunch", 425);
-const run = new Workout("Morning Run", 250);
+const breakfast = new Meal("Breakfast", 120);
+const lunch = new Meal("Lunch", 1000);
+const run = new Workout("Morning Run", 200);
 tracker.addMeal(breakfast);
 tracker.addMeal(lunch);
 tracker.addWorkout(run);
