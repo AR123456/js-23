@@ -141,12 +141,20 @@ class Storage {}
 class App {
   //// deals with DOM
   // constructor = Event listeners and initialize tracker instance of the calorie tracker
-  // listening for events happeining in DOM and methods firing from events
+  // listening for events happening in DOM and methods firing from events
   // private  newItem - new meal or workout, removeItem, filterItems, reset() and setLimit - from in these private methods will be calling some of the public methods in the CalorieTracker class
   // _loadEventListeners(){} - getElementById from forms,  addEventListener submit.  also the filters getElements and event listener of keyup ,  also reset and ue click as its event
   // input validation in here on the _newItem method
-  constructor() {}
-  _newItem() {}
+  constructor() {
+    // set the tracker to a property in the constructor
+  }
+
+  _newItem() {
+    const addFoodForm = document.getElementById("meal-form");
+    addFoodForm.addEventListener("submit", (e) => {
+      console.log();
+    });
+  }
   _removeItem() {}
   _filterItems() {}
   _reset() {}
