@@ -62,6 +62,7 @@ class CalorieTracker {
   }
   _displayCaloriesRemaining() {
     const caloriesRemainingEl = document.getElementById("calories-remaining");
+    const progressEl = document.getElementById("calorie-progress");
     const remaining = this._caloriesLimit - this._totalCalories;
     caloriesRemainingEl.innerHTML = remaining;
     console.log(remaining);
@@ -73,11 +74,15 @@ class CalorieTracker {
       caloriesRemainingEl.parentElement.parentElement.classList.add(
         "bg-danger"
       );
+      progressEl.classList.remove("bg-success");
+      progressEl.classList.add("bg-danger");
     } else {
       caloriesRemainingEl.parentElement.parentElement.classList.remove(
         "bg-danger"
       );
       caloriesRemainingEl.parentElement.parentElement.classList.add("bg-light");
+      progressEl.classList.remove("bg-danger");
+      progressEl.classList.remove("bg-success");
     }
   }
   _displayCaloriesProgress() {
@@ -121,7 +126,7 @@ class Workout {
 }
 //////// instantiate the tracker
 const tracker = new CalorieTracker();
-const breakfast = new Meal("Breakfast", 1200);
+const breakfast = new Meal("Breakfast", 1000);
 const lunch = new Meal("Lunch", 1000);
 const run = new Workout("Morning Run", 200);
 tracker.addMeal(breakfast);
@@ -140,6 +145,11 @@ class App {
   // private  newItem - new meal or workout, removeItem, filterItems, reset() and setLimit - from in these private methods will be calling some of the public methods in the CalorieTracker class
   // _loadEventListeners(){} - getElementById from forms,  addEventListener submit.  also the filters getElements and event listener of keyup ,  also reset and ue click as its event
   // input validation in here on the _newItem method
+  constructor() {}
+  _newItem() {}
+  _removeItem() {}
+  _filterItems() {}
+  _reset() {}
+  _setLimit() {}
 }
-
 const app = new App();
