@@ -65,7 +65,7 @@ class CalorieTracker {
     const progressEl = document.getElementById("calorie-progress");
     const remaining = this._caloriesLimit - this._totalCalories;
     caloriesRemainingEl.innerHTML = remaining;
-    console.log(remaining);
+    // console.log(remaining);
     if (remaining <= 0) {
       // red
       caloriesRemainingEl.parentElement.parentElement.classList.remove(
@@ -91,10 +91,10 @@ class CalorieTracker {
     const width = Math.min(percentage, 100);
     progressEl.style.width = `${width}%`;
 
-    console.log(width);
+    // console.log(width);
   }
   _displayNewMeal() {
-    console.log(tracker._meals);
+    // console.log(tracker._meals);
   }
   _displayNewWorkout() {}
   _renderStats() {
@@ -147,14 +147,19 @@ class App {
   // input validation in here on the _newItem method
   constructor() {
     // set the tracker to a property in the constructor
+    this._tracker = new CalorieTracker();
+    // define event listeners
+    document
+      .getElementById("meal-form")
+      .addEventListener("submit", this._newMeal);
   }
-
-  _newItem() {
-    const addFoodForm = document.getElementById("meal-form");
-    addFoodForm.addEventListener("submit", (e) => {
-      console.log();
-    });
+  _newMeal(e) {
+    // call on form submit
+    e.preventDefault();
+    const mealName = document.getElementById("meal-name").value;
+    const mealCalories = document.getElementById("meal-calories").value;
   }
+  _newItem() {}
   _removeItem() {}
   _filterItems() {}
   _reset() {}
