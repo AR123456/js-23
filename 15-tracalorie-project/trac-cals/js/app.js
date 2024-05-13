@@ -160,6 +160,9 @@ class App {
     const name = document.getElementById("meal-name");
     const calories = document.getElementById("meal-calories");
     // validate inputs
+    if (name.value === "" || calories.value === "") {
+      alert("Need name and value");
+    }
     console.log(name.value, calories.value);
   }
   _newItem() {}
