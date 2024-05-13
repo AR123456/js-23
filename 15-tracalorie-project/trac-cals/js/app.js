@@ -151,13 +151,16 @@ class App {
     // define event listeners
     document
       .getElementById("meal-form")
-      .addEventListener("submit", this._newMeal);
+      // need to use bind so that this is the app not the element the event is on
+      .addEventListener("submit", this._newMeal.bind(this));
   }
   _newMeal(e) {
     // call on form submit
     e.preventDefault();
-    const mealName = document.getElementById("meal-name").value;
-    const mealCalories = document.getElementById("meal-calories").value;
+    const name = document.getElementById("meal-name");
+    const calories = document.getElementById("meal-calories");
+    // validate inputs
+    console.log(name.value, calories.value);
   }
   _newItem() {}
   _removeItem() {}
