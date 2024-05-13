@@ -162,8 +162,15 @@ class App {
     // validate inputs
     if (name.value === "" || calories.value === "") {
       alert("Need name and value");
+      return;
     }
     console.log(name.value, calories.value);
+    const meal = new Meal(name.value, calories.value);
+    // call the add meal method on the tracker
+    this._tracker.addMeal(meal);
+    // clear form
+    name.value = "";
+    calories.value = "";
   }
   _newItem() {}
   _removeItem() {}
