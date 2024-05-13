@@ -165,7 +165,8 @@ class App {
       return;
     }
     console.log(name.value, calories.value);
-    const meal = new Meal(name.value, calories.value);
+    // add + to make the value string into a number
+    const meal = new Meal(name.value, +calories.value);
     // call the add meal method on the tracker
     this._tracker.addMeal(meal);
     // clear form
