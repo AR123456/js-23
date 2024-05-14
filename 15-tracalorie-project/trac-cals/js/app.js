@@ -157,7 +157,6 @@ class App {
       alert("Need name and value");
       return;
     }
-
     // add + to make the value string into a number
     const meal = new Meal(name.value, +calories.value);
     // call the add meal method on the tracker
@@ -165,6 +164,11 @@ class App {
     // clear form
     name.value = "";
     calories.value = "";
+    // re collapse the bootstrap modal from bootstrap docs
+    const collapseMeal = document.getElementById("collapse-meal");
+    const bsCollapse = new bootstrap.Collapse(collapseMeal, {
+      toggle: true,
+    });
   }
   _newWorkout(e) {
     e.preventDefault();
@@ -180,6 +184,10 @@ class App {
     this._tracker.addWorkout(workout);
     name.value = "";
     calories.value = "";
+    const collapseWorkout = document.getElementById("collapse-workout");
+    const bsCollapse = new bootstrap.Collapse(collapseWorkout, {
+      toggle: true,
+    });
   }
   _newItem() {}
   _removeItem() {}
