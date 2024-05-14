@@ -142,7 +142,11 @@ class App {
       .getElementById("meal-form")
       // need to use bind so that this is the app not the element the event is on
       .addEventListener("submit", this._newMeal.bind(this));
+    document
+      .getElementById("workout-form")
+      .addEventListener("submit", this._newWorkout.bind(this));
   }
+
   _newMeal(e) {
     // call on form submit
     e.preventDefault();
@@ -166,7 +170,7 @@ class App {
     e.preventDefault();
     const name = document.getElementById("workout-name");
     const calories = document.getElementById("workout-calories");
-    console.log(name, calories);
+
     if (name.value === "" || calories.value === "") {
       alert("Need name and value");
       return;
