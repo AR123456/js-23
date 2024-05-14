@@ -124,17 +124,6 @@ class Workout {
     this.calories = calories;
   }
 }
-//////// instantiate the tracker
-const tracker = new CalorieTracker();
-const breakfast = new Meal("Breakfast", 1000);
-const lunch = new Meal("Lunch", 1000);
-const run = new Workout("Morning Run", 200);
-tracker.addMeal(breakfast);
-tracker.addMeal(lunch);
-tracker.addWorkout(run);
-
-tracker._displayNewMeal();
-tracker._displayCaloriesBurned();
 
 class Storage {}
 // static methods - getCalorieLimit,setCalorieLimit,getTotalCalories, setTotalCalories,updateCalories,saveMeal,removeMeal,saveWorkout,removeWorkout,getMeals,getWorkouts,clearAll
@@ -164,12 +153,27 @@ class App {
       alert("Need name and value");
       return;
     }
-    console.log(name.value, calories.value);
+
     // add + to make the value string into a number
     const meal = new Meal(name.value, +calories.value);
     // call the add meal method on the tracker
     this._tracker.addMeal(meal);
     // clear form
+    name.value = "";
+    calories.value = "";
+  }
+  _newWorkout(e) {
+    e.preventDefault();
+    const name = document.getElementById("workout-name");
+    const calories = document.getElementById("workout-calories");
+    console.log(name, calories);
+    if (name.value === "" || calories.value === "") {
+      alert("Need name and value");
+      return;
+    }
+
+    const workout = new Workout(name.value, +calories.value);
+    this._tracker.addWorkout(workout);
     name.value = "";
     calories.value = "";
   }
