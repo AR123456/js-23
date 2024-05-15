@@ -18,9 +18,7 @@ class CalorieTracker {
   }
   //////Public Methods
   addMeal(meal) {
-    // add meal to array
     this._meals.push(meal);
-    // increment total cals
     this._totalCalories += meal.calories;
     this._renderStats();
   }
@@ -65,9 +63,7 @@ class CalorieTracker {
     const progressEl = document.getElementById("calorie-progress");
     const remaining = this._caloriesLimit - this._totalCalories;
     caloriesRemainingEl.innerHTML = remaining;
-    // console.log(remaining);
     if (remaining <= 0) {
-      // red
       caloriesRemainingEl.parentElement.parentElement.classList.remove(
         "bg-light"
       );
@@ -90,8 +86,6 @@ class CalorieTracker {
     const percentage = (this._totalCalories / this._caloriesLimit) * 100;
     const width = Math.min(percentage, 100);
     progressEl.style.width = `${width}%`;
-
-    // console.log(width);
   }
   _displayNewMeal() {
     // console.log(tracker._meals);
