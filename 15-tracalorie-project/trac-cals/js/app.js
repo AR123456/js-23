@@ -88,26 +88,29 @@ class CalorieTracker {
     const width = Math.min(percentage, 100);
     progressEl.style.width = `${width}%`;
   }
-  _displayNewMeal() {
+  _displayNewMeal(meal) {
     const mealsEl = document.getElementById("meal-items");
     const mealEl = document.createElement("div");
     mealEl.classList.add("card", "my-2");
+    // custom attribute to track id for later deletion if needed
+    // mealEl.setAttribute("data-id", meal.id);
 
-    //   mealsEl.innerHTML = `            <div class="card my-2">
-    //   <div class="card-body">
-    //     <div class="d-flex align-items-center justify-content-between">
-    //       <h4 class="mx-1">${this._meals[i].name}</h4>
-    //       <div
-    //         class="fs-1 bg-primary text-white text-center rounded-2 px-2 px-sm-5"
-    //       >
-    //     ${this._meals[i].calories}
-    //       </div>
-    //       <button class="delete btn btn-danger btn-sm mx-2">
-    //         <i class="fa-solid fa-xmark"></i>
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>`;
+    mealEl.innerHTML = `
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="mx-1">${meal.name}</h4>
+          <div
+            class="fs-1 bg-primary text-white text-center rounded-2 px-2 px-sm-5"
+          >
+        ${meal.calories}
+          </div>
+          <button class="delete btn btn-danger btn-sm mx-2">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    mealsEl.appendChild(mealEl);
     console.log(this._meals[0].name);
     console.log(this._meals[0].calories);
   }
