@@ -141,72 +141,35 @@ class App {
     document
       .getElementById("meal-form")
       // need to use bind so that this is the app not the element the event is on
-      .addEventListener("submit", this._newItem.bind(this));
+
+      .addEventListener("submit", this._newItem.bind(this, "meal"));
     document
       .getElementById("workout-form")
-      .addEventListener("submit", this._newItem.bind(this));
+      // adding arg after this to add the type item
+      .addEventListener("submit", this._newItem.bind(this, "workout"));
   }
-
-  _newMeal(e) {
-    // call on form submit
-    // e.preventDefault();
-    // const name = document.getElementById("meal-name");
-    // const calories = document.getElementById("meal-calories");
-    // validate inputs
+  // pass in the arg of type for meal or workout
+  _newItem(type, e) {
+    e.preventDefault();
+    // make dynamic to take passed in type
+    const name = document.getElementById(`${type}-name`);
+    const calories = document.getElementById(`${type}-calories`);
     if (name.value === "" || calories.value === "") {
-      alert("Need name and value");
+      alert("Please fill in all fields");
       return;
     }
-    // add + to make the value string into a number
-    // const meal = new Meal(name.value, +calories.value);
-    // call the add meal method on the tracker
-    // this._tracker.addMeal(meal);
-    // clear form
-    // name.value = "";
-    // calories.value = "";
-    // re collapse the bootstrap modal from bootstrap docs
-    const collapseMeal = document.getElementById("collapse-meal");
-    const bsCollapse = new bootstrap.Collapse(collapseMeal, {
-      toggle: true,
-    });
-  }
-  _newWorkout(e) {
-    e.preventDefault();
-    // const name = document.getElementById("workout-name");
-    // const calories = document.getElementById("workout-calories");
-
-    if (name.value === "" || calories.value === "") {
-      alert("Need name and value");
-      return;
+    if (type === "meal") {
+      const meal = new Meal(name.value, +calories.value);
+      this._tracker.addMeal(meal);
     }
-
-    // const workout = new Workout(name.value, +calories.value);
-    // this._tracker.addWorkout(workout);
-    // name.value = "";
-    // calories.value = "";
-    // const collapseWorkout = document.getElementById("collapse-workout");
-    // const bsCollapse = new bootstrap.Collapse(collapseWorkout, {
-    //   toggle: true,
-    // });
-  }
-  _newItem(e) {
-    e.preventDefault();
-    const nameMeal = document.getElementById("meal-name");
-    const caloriesMeal = document.getElementById("meal-calories");
-    const nameWorkout = document.getElementById("workout-name");
-    const caloriesWorkout = document.getElementById("workout-calories");
-
-    const meal = new Meal(nameMeal.value, +caloriesMeal.value);
-    this._tracker.addMeal(meal);
-    const workout = new Workout(nameWorkout.value, +caloriesWorkout.value);
-    this._tracker.addWorkout(workout);
-    nameMeal.value = "";
-    caloriesMeal.value = "";
-    nameWorkout.value = "";
-    caloriesWorkout.value = "";
-    const collapseMeal = document.getElementById("collapse-meal");
-    const collapseWorkout = document.getElementById("collapse-workout");
-    const bsCollapse = new bootstrap.Collapse(collapseWorkout, {
+    if (type === "workout") {
+      const workout = new Workout(name.value, +calories.value);
+      this._tracker.addWorkout(workout);
+    }
+    name.value = "";
+    calories.value = "";
+    const collapseItem = document.getElementById(`collapse-${type}`);
+    const bsCollapse = new bootstrap.Collapse(collapseItem, {
       toggle: true,
     });
   }
