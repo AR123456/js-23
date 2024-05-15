@@ -20,6 +20,7 @@ class CalorieTracker {
   addMeal(meal) {
     this._meals.push(meal);
     this._totalCalories += meal.calories;
+    this._displayNewMeal(meal);
     this._renderStats();
   }
   removeMeal() {}
@@ -88,6 +89,22 @@ class CalorieTracker {
     progressEl.style.width = `${width}%`;
   }
   _displayNewMeal() {
+    const mealsEl = document.getElementById("meal-items");
+    mealsEl.innerHTML = `            <div class="card my-2">
+    <div class="card-body">
+      <div class="d-flex align-items-center justify-content-between">
+        <h4 class="mx-1">Breakfast</h4>
+        <div
+          class="fs-1 bg-primary text-white text-center rounded-2 px-2 px-sm-5"
+        >
+          35000
+        </div>
+        <button class="delete btn btn-danger btn-sm mx-2">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+  </div>`;
     // console.log(tracker._meals);
   }
   _displayNewWorkout() {}
@@ -98,6 +115,7 @@ class CalorieTracker {
     this._displayCaloriesBurned();
     this._displayCaloriesRemaining();
     this._displayCaloriesProgress();
+    this._displayNewMeal();
   }
 }
 
