@@ -111,8 +111,6 @@ class CalorieTracker {
       </div>
     `;
     mealsEl.appendChild(mealEl);
-    console.log(this._meals[0].name);
-    console.log(this._meals[0].calories);
   }
   _displayNewWorkout() {}
   _renderStats() {
@@ -122,7 +120,6 @@ class CalorieTracker {
     this._displayCaloriesBurned();
     this._displayCaloriesRemaining();
     this._displayCaloriesProgress();
-    this._displayNewMeal();
   }
 }
 
