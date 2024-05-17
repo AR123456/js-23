@@ -23,7 +23,12 @@ class CalorieTracker {
     this._displayNewMeal(meal);
     this._renderStats();
   }
-  removeMeal() {}
+  removeMeal() {
+    // remove the meal from the array
+    // dont include it in calories so decrement total calories
+    // update display
+    // render stats
+  }
   addWorkout(workout) {
     this._workouts.push(workout);
     this._totalCalories -= workout.calories;
@@ -209,7 +214,12 @@ class App {
       toggle: true,
     });
   }
-  _removeItem() {}
+  // take in item type and event - going to need an event listener on the buttons with delete class in the div s with id meal-items and workout-items
+  _removeItem() {
+    // name, calories and id of the type passed in
+    // use type and id to find the item
+    // remove it from the array
+  }
   _filterItems() {}
   _reset() {}
   _setLimit() {}
