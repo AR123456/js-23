@@ -188,6 +188,11 @@ class App {
       .getElementById("workout-form")
       // adding arg after this to add the type item
       .addEventListener("submit", this._newItem.bind(this, "workout"));
+    //event delegation buttons in meal-items div
+    document
+      .getElementById("meal-items")
+      // this is the object not element so bind and pass in this and item which is meal
+      .addEventListener("click", this._removeItem.bind(this, "meal"));
   }
   // pass in the arg of type for meal or workout
   _newItem(type, e) {
@@ -215,7 +220,7 @@ class App {
     });
   }
   // take in item type and event - going to need an event listener on the buttons with delete class in the div s with id meal-items and workout-items
-  _removeItem() {
+  _removeItem(type, e) {
     // name, calories and id of the type passed in
     // use type and id to find the item
     // remove it from the array
