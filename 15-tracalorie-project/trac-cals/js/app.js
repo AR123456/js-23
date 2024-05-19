@@ -222,7 +222,15 @@ class App {
   // take in item type and event - going to need an event listener on the buttons with delete class in the div s with id meal-items and workout-items
   _removeItem(type, e) {
     // getting e, target button - delete and the icon within it
-    console.log(e.target.classList);
+    // console.log(e.target.classList);
+    if (
+      e.target.classList.contains("delete") ||
+      e.target.classList.contains("fa-xmark")
+    ) {
+      if (confirm("Are you sure?")) {
+        console.log("delete");
+      }
+    }
     // name, calories and id of the type passed in
     // use type and id to find the item
     // remove it from the array
