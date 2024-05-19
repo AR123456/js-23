@@ -228,7 +228,8 @@ class App {
       e.target.classList.contains("fa-xmark")
     ) {
       if (confirm("Are you sure?")) {
-        console.log("delete");
+        const id = e.target.closest(".card").getAttribute("data-id");
+        console.log(e.target.closest(".card"));
       }
     }
     // name, calories and id of the type passed in
