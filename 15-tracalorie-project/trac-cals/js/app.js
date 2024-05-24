@@ -27,9 +27,14 @@ class CalorieTracker {
     // remove the meal from the array, need index where the index of the meal matches the index that is being passed in
 
     const index = this._meals.findIndex((meal) => meal.id === id);
-    // dont include it in calories so decrement total calories
-    // update display
-    // render stats
+    // make sure the index is not -1 , which would mean not a match
+    if (index !== -1) {
+      const meal = this._meals[index];
+      // dont include it in calories so decrement total calories
+      this._totalCalories -= meal.calories;
+      this._meals.splice(index, 1);
+      this._renderStats();
+    }
   }
   addWorkout(workout) {
     this._workouts.push(workout);
