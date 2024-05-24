@@ -23,8 +23,10 @@ class CalorieTracker {
     this._displayNewMeal(meal);
     this._renderStats();
   }
-  removeMeal() {
-    // remove the meal from the array
+  removeMeal(id) {
+    // remove the meal from the array, need index where the index of the meal matches the index that is being passed in
+
+    const index = this._meals.findIndex((meal) => meal.id === id);
     // dont include it in calories so decrement total calories
     // update display
     // render stats
