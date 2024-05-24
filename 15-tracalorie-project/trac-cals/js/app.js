@@ -99,7 +99,7 @@ class CalorieTracker {
     const mealEl = document.createElement("div");
     mealEl.classList.add("card", "my-2");
     // custom attribute to track id for later deletion if needed
-    // mealEl.setAttribute("data-id", meal.id);
+    mealEl.setAttribute("data-id", meal.id);
     mealEl.innerHTML = `
       <div class="card-body">
         <div class="d-flex align-items-center justify-content-between">
@@ -229,7 +229,7 @@ class App {
     ) {
       if (confirm("Are you sure?")) {
         const id = e.target.closest(".card").getAttribute("data-id");
-        console.log(e.target.closest(".card"));
+        console.log(id);
       }
     }
     // name, calories and id of the type passed in
