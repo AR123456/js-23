@@ -234,6 +234,7 @@ class App {
         } else if (type === "workout") {
           this._tracker.removeWorkout(id);
         }
+        e.target.closest(".card").remove();
       }
     }
     // name, calories and id of the type passed in
