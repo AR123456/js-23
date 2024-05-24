@@ -229,7 +229,11 @@ class App {
     ) {
       if (confirm("Are you sure?")) {
         const id = e.target.closest(".card").getAttribute("data-id");
-        console.log(id);
+        if (type === "meal") {
+          this._tracker.removeMeal(id);
+        } else if (type === "workout") {
+          this._tracker.removeWorkout(id);
+        }
       }
     }
     // name, calories and id of the type passed in
