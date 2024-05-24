@@ -229,11 +229,9 @@ class App {
     ) {
       if (confirm("Are you sure?")) {
         const id = e.target.closest(".card").getAttribute("data-id");
-        if (type === "meal") {
-          this._tracker.removeMeal(id);
-        } else if (type === "workout") {
-          this._tracker.removeWorkout(id);
-        }
+        type === "meal"
+          ? this._tracker.removeMeal(id)
+          : this._tracker.removeWorkout(id);
         e.target.closest(".card").remove();
       }
     }
