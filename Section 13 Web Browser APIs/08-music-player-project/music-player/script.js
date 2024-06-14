@@ -1,24 +1,33 @@
 // consts
 const audio = document.getElementById("audio");
-const play = document.getElementById("play");
-const prev = document.getElementById("prev");
-const next = document.getElementById("next");
+const playBtn = document.getElementById("play");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
 const progress = document.getElementById("progress");
 const musicContainer = document.getElementById("music-container");
-const pause = `<button id="play" class="action-btn action-btn-big">
+const progressContainer = document.getElementById("progress-container");
+const title = document.getElementById("title");
+const cover = document.getElementById("cover");
+// string to match to track and pull in the correct source files by same name
+const songs = ["hey", "summer", "ukulele"];
+// track song, starting with ukulele by default
+let songIndex = 2;
+// load the song details into the info div
+
+const pauseBtn = `<button id="play" class="action-btn action-btn-big">
 <i class="fas fa-pause"></i>
 </button>`;
 
 const playSong = () => {
   musicContainer.classList.add("play");
   // change the play button to a pause button -
-  play.innerHTML = pause;
+  playBtn.innerHTML = pauseBtn;
   //play song
   audio.play();
 };
 
-play.addEventListener("click", playSong);
-pause.addEventListener("click", () => audio.pause());
+playBtn.addEventListener("click", playSong);
+pauseBtn.addEventListener("click", () => audio.pause());
 audio.addEventListener("timeupdate", () => {
   progress.innerText = audio.progress;
 });
