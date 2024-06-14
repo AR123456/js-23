@@ -11,12 +11,15 @@ const cover = document.getElementById("cover");
 // string to match to track and pull in the correct source files by same name
 const songs = ["hey", "summer", "ukulele"];
 // track song, starting with ukulele by default
-let songIndex = 2;
-// load the song details into the info div
+let songIndex = songs.length - 1;
 
-const pauseBtn = `<button id="play" class="action-btn action-btn-big">
-<i class="fas fa-pause"></i>
-</button>`;
+// function to load songs into the info div
+const loadSong = (song) => {
+  title.innerText = song;
+  audio.src = `music/${song}.mp3`;
+  cover.src = `images/${song}.jpg`;
+};
+loadSong(songs[songIndex]);
 
 const playSong = () => {
   musicContainer.classList.add("play");
