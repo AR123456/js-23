@@ -31,6 +31,15 @@ const pauseSong = () => {
   playBtn.querySelector("i.fas").classList.remove("fa-pause");
   audio.pause();
 };
+const prevSong = () => {
+  pauseSong();
+  loadSong(songs[songIndex - 1]);
+};
+const nextSong = () => {
+  pauseSong();
+  loadSong(songs[songIndex + 1]);
+};
+
 loadSong(songs[songIndex]);
 
 playBtn.addEventListener("click", () => {
@@ -42,3 +51,6 @@ playBtn.addEventListener("click", () => {
     playSong();
   }
 });
+
+prevBtn.addEventListener("click", prevSong);
+nextBtn.addEventListener("click", nextSong);
