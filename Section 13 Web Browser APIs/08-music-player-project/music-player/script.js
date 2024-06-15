@@ -19,18 +19,36 @@ const loadSong = (song) => {
   audio.src = `music/${song}.mp3`;
   cover.src = `images/${song}.jpg`;
 };
-loadSong(songs[songIndex]);
-
 const playSong = () => {
   musicContainer.classList.add("play");
-  // change the play button to a pause button -
-  playBtn.innerHTML = pauseBtn;
-  //play song
+  playBtn.querySelector("i.fas").classList.remove("fa-play");
+  playBtn.querySelector("i.fas").classList.add("fa-pause");
   audio.play();
 };
+const pauseSong = () => {
+  musicContainer.classList.remove("play");
+  playBtn.querySelector("i.fas").classList.add("fa-play");
+  playBtn.querySelector("i.fas").classList.remove("fa-pause");
+  audio.pause();
+};
+const prevSong = () => {
+  songIndex--;
+};
+const nextSong = () => {
+  songIndex++;
+};
 
-playBtn.addEventListener("click", playSong);
-pauseBtn.addEventListener("click", () => audio.pause());
-audio.addEventListener("timeupdate", () => {
-  progress.innerText = audio.progress;
+loadSong(songs[songIndex]);
+
+playBtn.addEventListener("click", () => {
+  // check if song is playing pause, if not play
+  const isPlaying = musicContainer.classList.contains("play");
+  if (isPlaying) {
+    pauseSong();
+  } else {
+    playSong();
+  }
 });
+
+prevBtn.addEventListener("click", prevSong);
+nextBtn.addEventListener("click", nextSong);
