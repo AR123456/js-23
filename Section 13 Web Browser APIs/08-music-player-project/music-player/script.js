@@ -32,12 +32,10 @@ const pauseSong = () => {
   audio.pause();
 };
 const prevSong = () => {
-  pauseSong();
-  loadSong(songs[songIndex - 1]);
+  songIndex--;
 };
 const nextSong = () => {
-  pauseSong();
-  loadSong(songs[songIndex + 1]);
+  songIndex++;
 };
 
 loadSong(songs[songIndex]);
