@@ -63,3 +63,9 @@ playBtn.addEventListener("click", () => {
 
 prevBtn.addEventListener("click", prevSong);
 nextBtn.addEventListener("click", nextSong);
+// display the tracktime
+audio.addEventListener("timeupdate", () => {
+  // console.log(audio.currentTime);
+  let timeElapsed = Math.floor((audio.currentTime / audio.duration) * 100);
+  progressContainer.style.width = `${timeElapsed}%`;
+});
