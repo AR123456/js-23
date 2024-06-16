@@ -48,7 +48,16 @@ const nextSong = () => {
   loadSong(songs[songIndex]);
   playSong();
 };
-
+// const updateProgress = () => {
+//   // console.log(audio.currentTime);
+//   let timeElapsed = Math.floor((audio.currentTime / audio.duration) * 100);
+//   progressContainer.style.width = `${timeElapsed}%`;
+// };
+const updateProgress = (e) => {
+  const { duration, currentTime } = e.srcElement;
+  const progressPercent = Math.floor((currentTime / duration) * 100);
+  progressContainer.style.width = `${progressPercent}%`;
+};
 loadSong(songs[songIndex]);
 
 playBtn.addEventListener("click", () => {
@@ -64,8 +73,5 @@ playBtn.addEventListener("click", () => {
 prevBtn.addEventListener("click", prevSong);
 nextBtn.addEventListener("click", nextSong);
 // display the tracktime
-audio.addEventListener("timeupdate", () => {
-  // console.log(audio.currentTime);
-  let timeElapsed = Math.floor((audio.currentTime / audio.duration) * 100);
-  progressContainer.style.width = `${timeElapsed}%`;
-});
+audio.addEventListener("timeupdate", updateProgress);
+// grab and drag progress
