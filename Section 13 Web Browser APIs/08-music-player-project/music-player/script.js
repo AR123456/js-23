@@ -19,6 +19,7 @@ const loadSong = (song) => {
   audio.src = `music/${song}.mp3`;
   cover.src = `images/${song}.jpg`;
 };
+
 const playSong = () => {
   musicContainer.classList.add("play");
   playBtn.querySelector("i.fas").classList.remove("fa-play");
@@ -33,9 +34,19 @@ const pauseSong = () => {
 };
 const prevSong = () => {
   songIndex--;
+  if (songIndex < 0) {
+    songIndex = songs.length - 1;
+  }
+  loadSong(songs[songIndex]);
+  playSong();
 };
 const nextSong = () => {
   songIndex++;
+  if (songIndex > songs.length - 1) {
+    songIndex = 0;
+  }
+  loadSong(songs[songIndex]);
+  playSong();
 };
 
 loadSong(songs[songIndex]);
