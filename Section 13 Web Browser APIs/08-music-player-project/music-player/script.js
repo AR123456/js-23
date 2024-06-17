@@ -51,12 +51,12 @@ const updateProgress = (e) => {
   const progressPercent = Math.floor((currentTime / duration) * 100);
   progressContainer.style.width = `${progressPercent}%`;
 };
-const setProgress = (e) => {
-  const width = progressContainer.clientWidth;
-  const clickX = e.pageX - progressContainer.offsetLeft;
-  const duration = audio.duration;
-  audio.currentTime = (clickX / width) * duration;
-};
+// const setProgress = (e) => {
+//   const width = progressContainer.clientWidth;
+//   const clickX = e.offsetX;
+//   const duration = audio.duration;
+//   audio.currentTime = (clickX / width) * duration;
+// };
 playBtn.addEventListener("click", () => {
   // check if song is playing pause, if not play
   const isPlaying = musicContainer.classList.contains("play");
@@ -70,5 +70,5 @@ prevBtn.addEventListener("click", prevSong);
 nextBtn.addEventListener("click", nextSong);
 // display the tracktime
 audio.addEventListener("timeupdate", updateProgress);
-// grab and drag progress
-progressContainer.addEventListener("click", setProgress);
+// change  progress
+// progressContainer.addEventListener("click", setProgress);
