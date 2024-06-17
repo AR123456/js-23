@@ -1,9 +1,9 @@
-const audio = document.getElementById("audio");
+const musicContainer = document.getElementById("music-container");
 const playBtn = document.getElementById("play");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
+const audio = document.getElementById("audio");
 const progress = document.getElementById("progress");
-const musicContainer = document.getElementById("music-container");
 const progressContainer = document.getElementById("progress-container");
 const title = document.getElementById("title");
 const cover = document.getElementById("cover");
@@ -17,7 +17,7 @@ const loadSong = (song) => {
   audio.src = `music/${song}.mp3`;
   cover.src = `images/${song}.jpg`;
 };
-// loadSong(songs[songIndex]);
+loadSong(songs[songIndex]);
 const playSong = () => {
   musicContainer.classList.add("play");
   playBtn.querySelector("i.fas").classList.remove("fa-play");
@@ -46,13 +46,30 @@ const nextSong = () => {
   loadSong(songs[songIndex]);
   playSong();
 };
+
 const updateProgress = (e) => {
   const { duration, currentTime } = e.srcElement;
   const progressPercent = Math.floor((currentTime / duration) * 100);
-  progressContainer.style.width = `${progressPercent}%`;
+  progress.style.width = `${progressPercent}%`;
 };
+//  works with functions like this
+// function updateProgress(e) {
+//   const { duration, currentTime } = e.srcElement;
+//   // const progressPercent = (currentTime / duration) * 100;
+//   const progressPercent = Math.floor((currentTime / duration) * 100);
+//   progress.style.width = `${progressPercent}%`;
+// }
+
+// function setProgress(e) {
+//   const width = this.clientWidth;
+//   const clickX = e.offsetX;
+//   const duration = audio.duration;
+
+//   audio.currentTime = (clickX / width) * duration;
+// }
+
 const setProgress = (e) => {
-  const width = this.clientWidth;
+  const width = progressContainer.clientWidth;
   const clickX = e.offsetX;
   const duration = audio.duration;
 
