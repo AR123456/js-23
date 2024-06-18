@@ -16,11 +16,14 @@
 function capitalizeWords(str) {
   return (
     str
-      //
+      //Split string into array
       .split(" ")
+      // use map to apply the function to each word in the array
       .map((word) => {
+        // convert the first character of the word to uppercase, then use slice to convert the rest of the word to lower case
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
+      // make the array into a string
       .join(" ")
   );
 }
