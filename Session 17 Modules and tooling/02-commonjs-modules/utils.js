@@ -29,6 +29,7 @@ function capitalizeWords(str) {
 }
 
 function makeMoney(amount) {
+  // add a $ sign
   return `$${amount}`;
 }
 // common js syntax for exporting
