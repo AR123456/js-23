@@ -1,4 +1,4 @@
-// use require if its my own or an npm package
+// use require if its my own or an npm package, destructure the functions syntax
 const { capitalizeWords, makeMoney } = require("./utils");
 const Person = require("./Person");
 
