@@ -14,8 +14,10 @@ const stopVideo = () => {
 
 const progressBar = () => {
   console.log(progress.value);
+  console.log(video.duration);
+  console.log(video.duration / progress.value);
 };
-
+timestamp.innerHTML = video.timestamp;
 play.addEventListener("click", playVideo);
 stop.addEventListener("click", stopVideo);
 progress.addEventListener("change", progressBar);
