@@ -13,11 +13,7 @@ const stopVideo = () => {
 };
 
 const progressBar = () => {
-  //   console.log(progress.value);
-  //   console.log(video.duration);
-  //   console.log(video.currentTime);
-  const progressPercent = (video.currentTime / video.duration) * progress.value;
-  console.log(progressPercent);
+  video.currentTime = (+progress.value * video.duration) / 100;
 };
 
 timestamp.innerHTML = video.currentTime;
