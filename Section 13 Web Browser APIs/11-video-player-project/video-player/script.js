@@ -13,12 +13,17 @@ const stopVideo = () => {
 };
 
 const progressBar = () => {
-  console.log(progress.value);
-  console.log(video.duration);
-  console.log(video.duration / progress.value);
-  console.log(video.currentTime);
+  //   console.log(progress.value);
+  //   console.log(video.duration);
+  //   console.log(video.currentTime);
+  const progressPercent = (video.currentTime / video.duration) * progress.value;
+  console.log(progressPercent);
 };
+
 timestamp.innerHTML = video.currentTime;
 play.addEventListener("click", playVideo);
 stop.addEventListener("click", stopVideo);
 progress.addEventListener("change", progressBar);
+video.addEventListener("timeupdate", () => {
+  timestamp.innerText = video.currentTime.toFixed(2);
+});
